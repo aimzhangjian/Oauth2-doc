@@ -1,0 +1,383 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>4. 构建简单的OAuth受保护资源 &mdash; 认证 1.0.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="../genindex.html"/>
+        <link rel="search" title="Search" href="../search.html"/>
+    <link rel="top" title="认证 1.0.0 documentation" href="../index.html"/>
+        <link rel="up" title="OAuth2" href="oauth2.html"/>
+        <link rel="next" title="5. 构建简单OAuth授权服务器" href="5-构建简单的OAuth授权服务器.html"/>
+        <link rel="prev" title="3. 构建OAuth客户端" href="3-构建简单的OAuth客户端.html"/> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> 认证
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.0.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="oauth2.html">OAuth2</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="1-简介.html">1. 简介</a></li>
+<li class="toctree-l2"><a class="reference internal" href="2-oauth.html">2. OAuth组件</a></li>
+<li class="toctree-l2"><a class="reference internal" href="3-构建简单的OAuth客户端.html">3. 构建OAuth客户端</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">4. 构建简单的OAuth受保护资源</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id1">4.1. 存储验证令牌</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="5-构建简单的OAuth授权服务器.html">5. 构建简单OAuth授权服务器</a></li>
+<li class="toctree-l2"><a class="reference internal" href="6-现实世界中OAuth2.0.html">6. 现实世界中的OAuth2.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="7-常见的客户端漏洞.html">7. 常见的客户端漏洞</a></li>
+<li class="toctree-l2"><a class="reference internal" href="8-常见的受保护资源漏洞.html">8. 常见的受保护资源漏洞</a></li>
+<li class="toctree-l2"><a class="reference internal" href="9-常见的授权服务器漏洞.html">9. 常见的授权服务器漏洞</a></li>
+<li class="toctree-l2"><a class="reference internal" href="10-常见的OAuth令牌漏洞.html">10. 常见的OAuth令牌漏洞</a></li>
+<li class="toctree-l2"><a class="reference internal" href="11-OAuth令牌.html">11. OAuth令牌</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../20-security/security.html">security</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../30-spring-oauth2/spring-oauth2.html">Spring OAuth2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../40-spring-cloud-oauth-security/spring-cloud-oauth-security.html">Spring Cloud OAuth</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">认证</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="oauth2.html">OAuth2</a> &raquo;</li>
+        
+      <li>4. 构建简单的OAuth受保护资源</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/10-oauth2/4-构建简单的OAuth受保护资源.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="oauth">
+<h1>4. 构建简单的OAuth受保护资源<a class="headerlink" href="#oauth" title="Permalink to this headline">¶</a></h1>
+<p>资源服务器需要从传入的HTTP请求中解析出OAuth令牌，验证令牌，并确定它能用于那些请求</p>
+<p>解析HTTP请求中的OAuth令牌:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">var</span> <span class="n">getAccessToken</span> <span class="o">=</span> <span class="n">function</span><span class="p">(</span><span class="n">req</span><span class="p">,</span> <span class="n">res</span><span class="p">,</span> <span class="nb">next</span><span class="p">){</span>
+    <span class="n">var</span> <span class="n">inToken</span> <span class="o">=</span> <span class="n">null</span><span class="p">;</span>
+    <span class="n">var</span> <span class="n">auth</span> <span class="o">=</span> <span class="n">req</span><span class="o">.</span><span class="n">headers</span><span class="p">[</span><span class="s1">&#39;authorization&#39;</span><span class="p">];</span>
+    <span class="k">if</span><span class="p">(</span><span class="n">auth</span> <span class="o">&amp;&amp;</span> <span class="n">auth</span><span class="o">.</span><span class="n">toLowerCase</span><span class="p">()</span><span class="o">.</span><span class="n">indexOf</span><span class="p">(</span><span class="s1">&#39;bearer&#39;</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">){</span>
+        <span class="n">inToken</span> <span class="o">=</span> <span class="n">auth</span><span class="o">.</span><span class="n">slice</span><span class="p">(</span><span class="s1">&#39;bearer&#39;</span><span class="o">.</span><span class="n">length</span><span class="p">);</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="k">if</span><span class="p">(</span><span class="n">req</span><span class="o">.</span><span class="n">body</span> <span class="o">&amp;&amp;</span> <span class="n">req</span><span class="o">.</span><span class="n">body</span><span class="o">.</span><span class="n">access_token</span><span class="p">){</span>
+        <span class="n">inToken</span> <span class="o">=</span> <span class="n">req</span><span class="o">.</span><span class="n">body</span><span class="o">.</span><span class="n">access_token</span><span class="p">;</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="k">if</span><span class="p">(</span><span class="n">req</span><span class="o">.</span><span class="n">query</span> <span class="o">&amp;&amp;</span> <span class="n">req</span><span class="o">.</span><span class="n">query</span><span class="o">.</span><span class="n">access_token</span><span class="p">){</span>
+        <span class="n">inToken</span> <span class="o">=</span> <span class="n">req</span><span class="o">.</span><span class="n">query</span><span class="o">.</span><span class="n">access_token</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">};</span>
+</pre></div>
+</div>
+<div class="section" id="id1">
+<h2>4.1. 存储验证令牌<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<p>令牌存储方式:</p>
+<blockquote>
+<div><ul class="simple">
+<li>共享数据库</li>
+<li>令牌内省Web协议，由授权服务器提供接口，让资源服务器能够在运行时检查令牌状态</li>
+<li>令牌内包含受保护资源能直接解析并理解的信息，JWT就是这样一种数据结构，可以使用受加密的JSON对象携带声明信息</li>
+</ul>
+</div></blockquote>
+<p>验证令牌:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">var</span> <span class="n">getAccessToken</span> <span class="o">=</span> <span class="n">function</span><span class="p">(</span><span class="n">req</span><span class="p">,</span> <span class="n">res</span><span class="p">,</span> <span class="nb">next</span><span class="p">){</span>
+    <span class="n">var</span> <span class="n">inToken</span> <span class="o">=</span> <span class="n">null</span><span class="p">;</span>
+    <span class="n">var</span> <span class="n">auth</span> <span class="o">=</span> <span class="n">req</span><span class="o">.</span><span class="n">headers</span><span class="p">[</span><span class="s1">&#39;authorization&#39;</span><span class="p">];</span>
+    <span class="k">if</span><span class="p">(</span><span class="n">auth</span> <span class="o">&amp;&amp;</span> <span class="n">auth</span><span class="o">.</span><span class="n">toLowerCase</span><span class="p">()</span><span class="o">.</span><span class="n">indexOf</span><span class="p">(</span><span class="s1">&#39;bearer&#39;</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">){</span>
+        <span class="n">inToken</span> <span class="o">=</span> <span class="n">auth</span><span class="o">.</span><span class="n">slice</span><span class="p">(</span><span class="s1">&#39;bearer&#39;</span><span class="o">.</span><span class="n">length</span><span class="p">);</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="k">if</span><span class="p">(</span><span class="n">req</span><span class="o">.</span><span class="n">body</span> <span class="o">&amp;&amp;</span> <span class="n">req</span><span class="o">.</span><span class="n">body</span><span class="o">.</span><span class="n">access_token</span><span class="p">){</span>
+        <span class="n">inToken</span> <span class="o">=</span> <span class="n">req</span><span class="o">.</span><span class="n">body</span><span class="o">.</span><span class="n">access_token</span><span class="p">;</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="k">if</span><span class="p">(</span><span class="n">req</span><span class="o">.</span><span class="n">query</span> <span class="o">&amp;&amp;</span> <span class="n">req</span><span class="o">.</span><span class="n">query</span><span class="o">.</span><span class="n">access_token</span><span class="p">){</span>
+        <span class="n">inToken</span> <span class="o">=</span> <span class="n">req</span><span class="o">.</span><span class="n">query</span><span class="o">.</span><span class="n">access_token</span>
+    <span class="p">}</span>
+    <span class="n">console</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="s1">&#39;Incoming token: </span><span class="si">%s</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">inToken</span><span class="p">);</span>
+    <span class="n">nosql</span><span class="o">.</span><span class="n">one</span><span class="p">(</span><span class="n">function</span><span class="p">(</span><span class="n">token</span><span class="p">){</span>
+        <span class="k">if</span><span class="p">(</span><span class="n">token</span><span class="o">.</span><span class="n">access_token</span> <span class="o">==</span> <span class="n">inToken</span><span class="p">){</span>
+            <span class="k">return</span> <span class="n">token</span><span class="p">;</span>
+        <span class="p">}</span>
+    <span class="p">},</span> <span class="n">function</span><span class="p">(</span><span class="n">err</span><span class="p">,</span> <span class="n">token</span><span class="p">){</span>
+        <span class="k">if</span><span class="p">(</span><span class="n">token</span><span class="p">){</span>
+            <span class="n">console</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="s1">&#39;We found a matching token: </span><span class="si">%s</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">inToken</span><span class="p">);</span>
+        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+            <span class="n">console</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="s1">&#39;No matching token was found.&#39;</span><span class="p">);</span>
+        <span class="p">}</span>
+        <span class="n">req</span><span class="o">.</span><span class="n">access_token</span> <span class="o">=</span> <span class="n">token</span><span class="p">;</span>
+        <span class="nb">next</span><span class="p">();</span>
+        <span class="k">return</span><span class="p">;</span>
+    <span class="p">})</span>
+<span class="p">};</span>
+</pre></div>
+</div>
+<p>根据令牌提供内容:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">var</span> <span class="n">requireAccessToken</span> <span class="o">=</span> <span class="n">function</span><span class="p">(</span><span class="n">req</span><span class="p">,</span> <span class="n">res</span><span class="p">,</span> <span class="nb">next</span><span class="p">){</span>
+    <span class="k">if</span><span class="p">(</span><span class="n">req</span><span class="o">.</span><span class="n">access_token</span><span class="p">){</span>
+        <span class="nb">next</span><span class="p">();</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+        <span class="n">res</span><span class="o">.</span><span class="n">status</span><span class="p">(</span><span class="mi">401</span><span class="p">)</span><span class="o">.</span><span class="n">end</span><span class="p">();</span>
+    <span class="p">}</span>
+<span class="p">};</span>
+</pre></div>
+</div>
+<p>不同权限范围对应不同操作:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">app</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;/words&#39;</span><span class="p">,</span> <span class="n">getAccessToken</span><span class="p">,</span> <span class="n">requireAccessToken</span><span class="p">,</span> <span class="n">function</span><span class="p">(</span><span class="n">req</span><span class="p">,</span> <span class="n">res</span><span class="p">){</span>
+    <span class="k">if</span><span class="p">(</span><span class="n">__</span><span class="o">.</span><span class="n">contains</span><span class="p">(</span><span class="n">req</span><span class="o">.</span><span class="n">access_token</span><span class="o">.</span><span class="n">scope</span><span class="p">,</span> <span class="s1">&#39;read&#39;</span><span class="p">)){</span>
+        <span class="n">res</span><span class="o">.</span><span class="n">json</span><span class="p">({</span><span class="n">words</span><span class="p">:</span> <span class="n">savedWords</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="s1">&#39; &#39;</span><span class="p">),</span> <span class="n">timestamp</span><span class="p">:</span> <span class="n">Data</span><span class="o">.</span><span class="n">now</span><span class="p">()});</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+        <span class="n">res</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="s1">&#39;WWW-Authenticate&#39;</span><span class="p">,</span> <span class="s1">&#39;Bearer realm=localhost:9002, error = &quot;insufficient_scope&quot;, scope = &quot;read&quot;&#39;</span><span class="p">);</span>
+        <span class="n">res</span><span class="o">.</span><span class="n">status</span><span class="p">(</span><span class="mi">403</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">});</span>
+
+<span class="n">app</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="s1">&#39;/words&#39;</span><span class="p">,</span> <span class="n">getAccessToken</span><span class="p">,</span> <span class="n">requireAccessToken</span><span class="p">,</span> <span class="n">function</span><span class="p">(</span><span class="n">req</span><span class="p">,</span> <span class="n">res</span><span class="p">){</span>
+    <span class="k">if</span><span class="p">(</span><span class="n">__</span><span class="o">.</span><span class="n">contains</span><span class="p">(</span><span class="n">req</span><span class="o">.</span><span class="n">access_token</span><span class="o">.</span><span class="n">scope</span><span class="p">,</span> <span class="s1">&#39;write&#39;</span><span class="p">)){</span>
+        <span class="k">if</span><span class="p">(</span><span class="n">req</span><span class="o">.</span><span class="n">body</span><span class="o">.</span><span class="n">word</span><span class="p">){</span>
+            <span class="n">savedWords</span><span class="o">.</span><span class="n">push</span><span class="p">(</span><span class="n">req</span><span class="o">.</span><span class="n">body</span><span class="o">.</span><span class="n">word</span><span class="p">);</span>
+        <span class="p">}</span>
+        <span class="n">res</span><span class="o">.</span><span class="n">stastus</span><span class="p">(</span><span class="mi">201</span><span class="p">)</span><span class="o">.</span><span class="n">end</span><span class="p">();</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+        <span class="n">res</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="s1">&#39;WWW-Authenticate&#39;</span><span class="p">,</span> <span class="s1">&#39;Bearer realm = localhost:9002, error = &quot;insufficient_scope&quot;, scope = &quot;write&quot;&#39;</span><span class="p">)</span>
+        <span class="n">res</span><span class="o">.</span><span class="n">status</span><span class="p">(</span><span class="mi">403</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">});</span>
+
+<span class="n">app</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="s1">&#39;/words&#39;</span><span class="p">,</span> <span class="n">getAccessToken</span><span class="p">,</span> <span class="n">requireAccessToken</span><span class="p">,</span> <span class="n">function</span><span class="p">(</span><span class="n">req</span><span class="p">,</span> <span class="n">res</span><span class="p">){</span>
+    <span class="k">if</span><span class="p">(</span><span class="n">__</span><span class="o">.</span><span class="n">contains</span><span class="p">(</span><span class="n">req</span><span class="o">.</span><span class="n">access_token</span><span class="o">.</span><span class="n">scope</span><span class="p">,</span> <span class="s1">&#39;delete&#39;</span><span class="p">)){</span>
+        <span class="n">savedWord</span><span class="o">.</span><span class="n">pop</span><span class="p">();</span>
+        <span class="n">res</span><span class="o">.</span><span class="n">status</span><span class="p">(</span><span class="mi">204</span><span class="p">)</span><span class="o">.</span><span class="n">end</span><span class="p">();</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+        <span class="n">res</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="s1">&#39;WWW-Authenticate&#39;</span><span class="p">,</span> <span class="s1">&#39;Bearer realm = location:9002, error = &quot;insufficient_scope&quot;, scope = &quot;delete&quot;&#39;</span><span class="p">)</span>
+    <span class="p">}</span>
+<span class="p">});</span>
+</pre></div>
+</div>
+<p>不同权限范围对应不同数据结果:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">app</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;/produce&#39;</span><span class="p">,</span> <span class="n">getAccessToken</span><span class="p">,</span> <span class="n">requireAccessToken</span><span class="p">,</span> <span class="n">function</span><span class="p">(</span><span class="n">req</span><span class="p">,</span> <span class="n">res</span><span class="p">){</span>
+    <span class="n">var</span> <span class="n">produce</span> <span class="o">=</span>  <span class="p">{</span><span class="n">fruit</span><span class="p">:</span> <span class="p">[],</span> <span class="n">veggies</span><span class="p">:</span> <span class="p">[],</span> <span class="n">meats</span><span class="p">:</span> <span class="p">[]};</span>
+    <span class="k">if</span><span class="p">(</span><span class="n">__</span><span class="o">.</span><span class="n">contains</span><span class="p">(</span><span class="n">req</span><span class="o">.</span><span class="n">access_token</span><span class="o">.</span><span class="n">scope</span><span class="p">,</span> <span class="s1">&#39;fruit&#39;</span><span class="p">)){</span>
+        <span class="n">produce</span><span class="o">.</span><span class="n">fruit</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;apple&#39;</span><span class="p">,</span> <span class="s1">&#39;banana&#39;</span><span class="p">,</span> <span class="s1">&#39;kiwi&#39;</span><span class="p">];</span>
+    <span class="p">}</span>
+    <span class="k">if</span><span class="p">(</span><span class="n">__</span><span class="o">.</span><span class="n">contains</span><span class="p">(</span><span class="n">req</span><span class="o">.</span><span class="n">access_token</span><span class="o">.</span><span class="n">scope</span><span class="p">,</span> <span class="s1">&#39;veggies&#39;</span><span class="p">)){</span>
+        <span class="n">produce</span><span class="o">.</span><span class="n">veggies</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;lettuce&#39;</span><span class="p">,</span> <span class="s1">&#39;onion&#39;</span><span class="p">,</span> <span class="s1">&#39;potato&#39;</span><span class="p">];</span>
+    <span class="p">}</span>
+    <span class="k">if</span><span class="p">(</span><span class="n">__</span><span class="o">.</span><span class="n">contains</span><span class="p">(</span><span class="n">req</span><span class="o">.</span><span class="n">access_token</span><span class="o">.</span><span class="n">scope</span><span class="p">,</span> <span class="s1">&#39;meats&#39;</span><span class="p">)){</span>
+        <span class="n">produce</span><span class="o">.</span><span class="n">meats</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;bacon&#39;</span><span class="p">,</span> <span class="s1">&#39;steak&#39;</span><span class="p">,</span> <span class="s1">&#39;chicken breast&#39;</span><span class="p">];</span>
+    <span class="p">}</span>
+<span class="p">});</span>
+</pre></div>
+</div>
+<p>不同用户对应不同数据结果:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">app</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;/favorites&#39;</span><span class="p">,</span> <span class="n">getAccessToke</span><span class="p">,</span> <span class="n">requireAccessToken</span><span class="p">,</span> <span class="n">function</span><span class="p">(</span><span class="n">req</span><span class="p">,</span> <span class="n">res</span><span class="p">){</span>
+   <span class="k">if</span><span class="p">(</span><span class="n">req</span><span class="o">.</span><span class="n">access_token</span><span class="o">.</span><span class="n">user</span> <span class="o">==</span> <span class="s1">&#39;alice&#39;</span><span class="p">){</span>
+       <span class="n">res</span><span class="o">.</span><span class="n">json</span><span class="p">({</span><span class="n">user</span><span class="p">:</span> <span class="s1">&#39;Alice&#39;</span><span class="p">,</span> <span class="n">favorites</span><span class="p">:</span> <span class="n">aliceFavorites</span><span class="p">});</span>
+   <span class="p">}</span> <span class="k">else</span> <span class="k">if</span><span class="p">(</span><span class="n">req</span><span class="o">.</span><span class="n">access_token</span><span class="o">.</span><span class="n">user</span> <span class="o">==</span> <span class="s1">&#39;bob&#39;</span><span class="p">){</span>
+       <span class="n">res</span><span class="o">.</span><span class="n">json</span><span class="p">({</span><span class="n">user</span><span class="p">:</span> <span class="s1">&#39;Bob&#39;</span><span class="p">,</span> <span class="n">favorites</span><span class="p">:</span> <span class="n">bobFavorites</span><span class="p">});</span>
+   <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+       <span class="n">var</span> <span class="n">unknow</span> <span class="o">=</span> <span class="p">{</span><span class="n">user</span><span class="p">:</span> <span class="s1">&#39;Unknown&#39;</span><span class="p">,</span> <span class="n">favorites</span><span class="p">:</span> <span class="p">{</span><span class="n">movies</span><span class="p">:[],</span> <span class="n">foods</span><span class="p">:</span> <span class="p">[],</span> <span class="n">music</span><span class="p">:</span> <span class="p">[]}};</span>
+       <span class="n">res</span><span class="o">.</span><span class="n">json</span><span class="p">(</span><span class="n">unknown</span><span class="p">);</span>
+   <span class="p">}</span>
+<span class="p">});</span>
+</pre></div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="5-构建简单的OAuth授权服务器.html" class="btn btn-neutral float-right" title="5. 构建简单OAuth授权服务器" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="3-构建简单的OAuth客户端.html" class="btn btn-neutral" title="3. 构建OAuth客户端" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright .
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'1.0.0',
+            LANGUAGE:'None',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+      <script type="text/javascript" src="../_static/language_data.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

@@ -1,0 +1,515 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>3. 构建OAuth客户端 &mdash; 认证 1.0.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="../genindex.html"/>
+        <link rel="search" title="Search" href="../search.html"/>
+    <link rel="top" title="认证 1.0.0 documentation" href="../index.html"/>
+        <link rel="up" title="OAuth2" href="oauth2.html"/>
+        <link rel="next" title="4. 构建简单的OAuth受保护资源" href="4-构建简单的OAuth受保护资源.html"/>
+        <link rel="prev" title="2. OAuth组件" href="2-oauth.html"/> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> 认证
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.0.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="oauth2.html">OAuth2</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="1-简介.html">1. 简介</a></li>
+<li class="toctree-l2"><a class="reference internal" href="2-oauth.html">2. OAuth组件</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">3. 构建OAuth客户端</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id1">3.1. 向授权服务器注册OAuth客户端</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id2">3.2. 授权码许可类型获取令牌</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="4-构建简单的OAuth受保护资源.html">4. 构建简单的OAuth受保护资源</a></li>
+<li class="toctree-l2"><a class="reference internal" href="5-构建简单的OAuth授权服务器.html">5. 构建简单OAuth授权服务器</a></li>
+<li class="toctree-l2"><a class="reference internal" href="6-现实世界中OAuth2.0.html">6. 现实世界中的OAuth2.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="7-常见的客户端漏洞.html">7. 常见的客户端漏洞</a></li>
+<li class="toctree-l2"><a class="reference internal" href="8-常见的受保护资源漏洞.html">8. 常见的受保护资源漏洞</a></li>
+<li class="toctree-l2"><a class="reference internal" href="9-常见的授权服务器漏洞.html">9. 常见的授权服务器漏洞</a></li>
+<li class="toctree-l2"><a class="reference internal" href="10-常见的OAuth令牌漏洞.html">10. 常见的OAuth令牌漏洞</a></li>
+<li class="toctree-l2"><a class="reference internal" href="11-OAuth令牌.html">11. OAuth令牌</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../20-security/security.html">security</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../30-spring-oauth2/spring-oauth2.html">Spring OAuth2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../40-spring-cloud-oauth-security/spring-cloud-oauth-security.html">Spring Cloud OAuth</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">认证</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="oauth2.html">OAuth2</a> &raquo;</li>
+        
+      <li>3. 构建OAuth客户端</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/10-oauth2/3-构建简单的OAuth客户端.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="oauth">
+<h1>3. 构建OAuth客户端<a class="headerlink" href="#oauth" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="id1">
+<h2>3.1. 向授权服务器注册OAuth客户端<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<dl class="docutils">
+<dt>客户端标识符:</dt>
+<dd><ul class="first last simple">
+<li>用来标识OAuth客户端，在OAuth协议的多个组件都称其为client_id。在一个给定的授权服务器中，每个客户端的标识符必须唯一，因此客户端标识符总是由授权服务器分配，可以通过开发者门户完成，也可以通过动态客户端注册</li>
+</ul>
+</dd>
+<dt>共享密钥:</dt>
+<dd><ul class="first last simple">
+<li>client_secret用于客户端与授权服务器交互时进行身份认证</li>
+</ul>
+</dd>
+</dl>
+</div>
+<div class="section" id="id2">
+<h2>3.2. 授权码许可类型获取令牌<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<p>使用授权码许可类型的交互授权形式，有客户端将资源拥有者重定向到授权服务器的授权端点，然后服务器通过redirect_uri将授权码返回给客户端，最后客户端将收到的授权码发送给授权服务器的令牌端点，换取OAuth访问令牌</p>
+<dl class="docutils">
+<dt>发送授权请求::</dt>
+<dd><dl class="first docutils">
+<dt>var client = {</dt>
+<dd>“client_id”: “oauth-client-1”,
+“client-secret”: “oauth-client-secret-1”,
+“redirect_uris”: [“<a class="reference external" href="http://localhost:9000/callback">http://localhost:9000/callback</a>”]</dd>
+</dl>
+<p>};</p>
+<dl class="docutils">
+<dt>var authServer = {</dt>
+<dd>authorizationEndpoint: ‘<a class="reference external" href="http://localhost:9001/authorize">http://localhost:9001/authorize</a>’,
+tokenEndpoint: ‘<a class="reference external" href="http://localhost:9001/token">http://localhost:9001/token</a>’</dd>
+</dl>
+<p>};</p>
+<dl class="docutils">
+<dt>var buildUrl = function(base, options, hash){</dt>
+<dd><p class="first">var newUrl = url.parse(base, ture);
+delete newUrl.search;
+if(!newUrl.query) {</p>
+<blockquote>
+<div>newUrl.query = {};</div></blockquote>
+<p>}
+__.each(options, function(value, key, list){</p>
+<blockquote>
+<div>newUrl.query[key] = value;</div></blockquote>
+<p>});
+if(hash){</p>
+<blockquote>
+<div>newUrl.hash = hash;</div></blockquote>
+<p class="last">}
+return url.format(newUrl);</p>
+</dd>
+</dl>
+<p>};</p>
+<dl class="docutils">
+<dt>app.get(‘/authorize’, function(req, res){</dt>
+<dd><p class="first">access_toke = null;
+state = randomstring.generate();
+var authorizeUrl = buildUrl(authServer.authorizationEndpoint, {</p>
+<blockquote>
+<div>response_type: ‘code’,
+client_id: client.client_id,
+redirect_uri: cllient.redirect_uris[0],
+state: state</div></blockquote>
+<p>});</p>
+<p class="last">console.log(“redirect”, authorizeUrl);
+res.redirect(authorizeUrl)</p>
+</dd>
+</dl>
+<p class="last">});</p>
+</dd>
+</dl>
+<p>真正的OAuth客户端应用绝不因该使用像这样的能从外部访问的触发机制，而是因该跟踪内部应用状态，用于确定何时需要请求新的访问令牌</p>
+<dl class="docutils">
+<dt>处理授权响应::</dt>
+<dd><dl class="first docutils">
+<dt>app.get(‘/callback’, function(req, res){</dt>
+<dd><dl class="first docutils">
+<dt>if(req.query.error){</dt>
+<dd>res.render(“error”, {error: req.query.error});
+return;</dd>
+</dl>
+<p>}
+if(req.query.state != state){</p>
+<blockquote>
+<div>console.log(‘State DOES NOT MATCH: expeted %s got %s’, state, req.query.state);
+res.render(“error”, {error: ‘State value did not match’});
+return;</div></blockquote>
+<p>}
+var code = req.query.code;
+var form_date = qs.stringify({</p>
+<blockquote>
+<div>grant_type: ‘authorization_code’,
+code: code,
+redirect_uri: client.redirect_uris[0]</div></blockquote>
+<p>});
+var headers = {</p>
+<blockquote>
+<div>‘Content-Type’: ‘application/x-www-form-urlencoded’,
+‘Authorization’: ‘Basic’ + encodeClientCredentials(client.client_id, client.client_secret)</div></blockquote>
+<p>};
+var tokRes = request(‘POST’, authServer.tokenEndpoint, {</p>
+<blockquote>
+<div>body: form_data,
+headers: headers</div></blockquote>
+<p>})
+console.log(‘Requesting access token for code %s’, code);
+if(tokRes.statusCode &gt;= 200 &amp;&amp; tokRes.statusCode &lt; 300){</p>
+<blockquote>
+<div>var body = JSON.parse(tokRes.getBody);
+access_token = body.access_token;
+console.log(‘Got access token: %s’, access_token);
+res.render(‘index’, {access_token: access_token, scope: scope});</div></blockquote>
+<dl class="docutils">
+<dt>} else {</dt>
+<dd>res.render(‘error’, {error: ‘Unable to fetch access token, server response:’ + tokRes.statusCode})</dd>
+</dl>
+<p class="last">}</p>
+</dd>
+</dl>
+<p class="last">});</p>
+</dd>
+</dl>
+<p>state参数添加跨站保护</p>
+<p>防止攻击者向授权服务器暴力搜索有效的授权码，浪费客户端和授权服务器资源，以及导致客户端获取一个从未请求过的令牌，可以使用state可选OAuth参数来缓解这个问题，将该参数设置为一个随机值，并在应用中用一个变量保存。将state添加到通过授权端点URL发送的参数列表中。当授权服务器收到state参数的授权请求时，他必须总是将该state参数和授权码一起原样返回给客户端。客户端可以比较返回的status与原值是否一致，如果不一致向最终用户提示错误。</p>
+<p>使用令牌访问受保护资源</p>
+<p>客户端要访问受保护资源只需要使用令牌向受保护资源发出调用请求，有3个合法的位置可以用于携带令牌:</p>
+<blockquote>
+<div><ul class="simple">
+<li>使用HTTP Authorization头部，这是规范推荐尽可能使用的方法，最灵活、最安全</li>
+</ul>
+</div></blockquote>
+<p>使用表单格式请求体参数:</p>
+<blockquote>
+<div><ul class="simple">
+<li>限制受保护资源只能接收表单格式的输入参数，并且要使用POST方法</li>
+</ul>
+</div></blockquote>
+<p>使用URL编码的查询参数:</p>
+<blockquote>
+<div><ul class="simple">
+<li>可能被无意地泄露到服务器日志中，应为查询参数是URL请求的一部分</li>
+</ul>
+</div></blockquote>
+<dl class="docutils">
+<dt>获取受保护资源::</dt>
+<dd><dl class="first docutils">
+<dt>app.get(‘/fetch_resource’, function(req, res){</dt>
+<dd><dl class="first docutils">
+<dt>if(!access_token){</dt>
+<dd>res.render(‘error’, {error: ‘missiong Access Token’});</dd>
+</dl>
+<p>}
+console.log(‘Making request with access token %s’, access_token);
+var headers = {</p>
+<blockquote>
+<div>‘Authorization’: ‘Bearer’ + access_token</div></blockquote>
+<p>};
+var resource = request(‘POST’, protectedResource, {headers: headers});
+if(resource.statusCode &gt;= 200 &amp;&amp; resource.statusCode &lt; 300){</p>
+<blockquote>
+<div>var body = JSON.parse(resource.getBody());
+res.render(‘data’, {resource: body});
+return;</div></blockquote>
+<dl class="docutils">
+<dt>} else {</dt>
+<dd>access_token = null;
+res.render(‘error’, {error: resource.statusCode});
+return;</dd>
+</dl>
+<p class="last">}</p>
+</dd>
+</dl>
+<p class="last">});</p>
+</dd>
+<dt>刷新访问令牌::</dt>
+<dd><dl class="first docutils">
+<dt>app.get(‘/fetch_resource’, function(req, res){</dt>
+<dd><p class="first">console.log(‘Making request with access token %s’, access_token);
+var headers = {</p>
+<blockquote>
+<div>‘Authorization’: ‘Bearer’ + access_token,
+‘Content-type’: ‘application/x-www-form-urlencoded’</div></blockquote>
+<p>}
+var resource = request(‘POST’, protectedResource, {headers: headers})
+if(resource.statusCode &gt;= 200 &amp;&amp; resource.statusCode &lt; 300){</p>
+<blockquote>
+<div>var body = JSON.parse(resource.getBody());
+res.render(‘data’, {resource: body});
+return;</div></blockquote>
+<dl class="docutils">
+<dt>} else {</dt>
+<dd><p class="first">access_token = null;
+if(refresh_token){</p>
+<blockquote>
+<div>refreshAccessToken(req, res);
+return;</div></blockquote>
+<dl class="docutils">
+<dt>} else {</dt>
+<dd>res.render(‘error’, {error: resource.statusCode});
+return;</dd>
+</dl>
+<p class="last">}</p>
+</dd>
+</dl>
+<p class="last">}</p>
+</dd>
+</dl>
+<p>});</p>
+<dl class="docutils">
+<dt>var refreshAccessToken = function(req, res){</dt>
+<dd><dl class="first docutils">
+<dt>var form_data = qs.stringify({</dt>
+<dd>grant_type: ‘refresh_token’,
+refresh_token: refresh_token</dd>
+</dl>
+<p>});
+var headers = {</p>
+<blockquote>
+<div>‘Content-Type’: ‘application/x-www-form-urlencoded’,
+‘Authorization’: ‘Basic’ + encodeClientCredentials(client.client_id, client.client_secret)</div></blockquote>
+<p>};
+console.log(‘Refreshing token %s’, refresh_token);
+var tokRes = request(‘POST’, authServer.tokenEndpoint,{</p>
+<blockquote>
+<div>body: form_data,
+headers: headers</div></blockquote>
+<p>})
+if(tokRes.statusCode &gt;= 200 &amp;&amp; tokRes.statusCode &lt; 300){</p>
+<blockquote>
+<div><p>var body = JSON.parse(tokRes.getBody());
+access_token = body.access_token;
+console.log(‘Got access token: %s’, refresh_token);
+if(body.refresh_token){</p>
+<blockquote>
+<div>refresh_token = body.refresh_token;
+console.log(‘Got refresh token: %s’, refresh_token);</div></blockquote>
+<p>}
+scope = body.scope;
+console.log(‘Got scope: %s’, scope);
+res.redirect(‘/fetch_resource’);
+return;</p>
+</div></blockquote>
+<dl class="docutils">
+<dt>} else {</dt>
+<dd>console.log(‘No refresh token, asking the user to get a new access token’);
+refresh_token = null;
+res.render(‘error’, {error: ‘Unable to refresh token.’});
+return;</dd>
+</dl>
+<p class="last">}</p>
+</dd>
+</dl>
+<p class="last">}</p>
+</dd>
+</dl>
+</div>
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="4-构建简单的OAuth受保护资源.html" class="btn btn-neutral float-right" title="4. 构建简单的OAuth受保护资源" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="2-oauth.html" class="btn btn-neutral" title="2. OAuth组件" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright .
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'1.0.0',
+            LANGUAGE:'None',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+      <script type="text/javascript" src="../_static/language_data.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

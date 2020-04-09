@@ -1,0 +1,507 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>11. OAuth令牌 &mdash; 认证 1.0.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="../genindex.html"/>
+        <link rel="search" title="Search" href="../search.html"/>
+    <link rel="top" title="认证 1.0.0 documentation" href="../index.html"/>
+        <link rel="up" title="OAuth2" href="oauth2.html"/>
+        <link rel="next" title="security" href="../20-security/security.html"/>
+        <link rel="prev" title="10. 常见的OAuth令牌漏洞" href="10-常见的OAuth令牌漏洞.html"/> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> 认证
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.0.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="oauth2.html">OAuth2</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="1-简介.html">1. 简介</a></li>
+<li class="toctree-l2"><a class="reference internal" href="2-oauth.html">2. OAuth组件</a></li>
+<li class="toctree-l2"><a class="reference internal" href="3-构建简单的OAuth客户端.html">3. 构建OAuth客户端</a></li>
+<li class="toctree-l2"><a class="reference internal" href="4-构建简单的OAuth受保护资源.html">4. 构建简单的OAuth受保护资源</a></li>
+<li class="toctree-l2"><a class="reference internal" href="5-构建简单的OAuth授权服务器.html">5. 构建简单OAuth授权服务器</a></li>
+<li class="toctree-l2"><a class="reference internal" href="6-现实世界中OAuth2.0.html">6. 现实世界中的OAuth2.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="7-常见的客户端漏洞.html">7. 常见的客户端漏洞</a></li>
+<li class="toctree-l2"><a class="reference internal" href="8-常见的受保护资源漏洞.html">8. 常见的受保护资源漏洞</a></li>
+<li class="toctree-l2"><a class="reference internal" href="9-常见的授权服务器漏洞.html">9. 常见的授权服务器漏洞</a></li>
+<li class="toctree-l2"><a class="reference internal" href="10-常见的OAuth令牌漏洞.html">10. 常见的OAuth令牌漏洞</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">11. OAuth令牌</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id1">11.1. OAuth令牌是什么</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#jwt">11.2. 结构化令牌：JWT</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#jose">11.3. 令牌的加密保护：JOSE</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id2">11.4. 在线获取令牌信息：令牌内省</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../20-security/security.html">security</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../30-spring-oauth2/spring-oauth2.html">Spring OAuth2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../40-spring-cloud-oauth-security/spring-cloud-oauth-security.html">Spring Cloud OAuth</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">认证</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="oauth2.html">OAuth2</a> &raquo;</li>
+        
+      <li>11. OAuth令牌</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/10-oauth2/11-OAuth令牌.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="oauth">
+<h1>11. OAuth令牌<a class="headerlink" href="#oauth" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="id1">
+<h2>11.1. OAuth令牌是什么<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<p>令牌是OAuth事务的核心。令牌表示的是授权行为的结果：一个信息元组，包括资源拥有者、客户端、授权服务器、受保护资源、权限范围以及其他与授权决策有关的信息</p>
+<p>OAuth核心规范不对令牌本身做任何规定，使得OAuth能广泛的适用于各种部署场景。令牌可以与授权用户关联或者系统中所有用户关联，也可以不代表任何用户，令牌可以有内部结构，也可以是随机的无意义字符串。</p>
+<p>对于令牌存储在共享数据库中的情况，当受保护资源接收客户端令牌后会去用户中查找令牌，令牌本身不携带任何信息。对于非共享数据库情况，可以让令牌本身携带信息，而不用通过请求接口或查询数据库查找令牌信息。</p>
+</div>
+<div class="section" id="jwt">
+<h2>11.2. 结构化令牌：JWT<a class="headerlink" href="#jwt" title="Permalink to this headline">¶</a></h2>
+<p>通过将所有必要的信息放到令牌内部，使得授权服务可以通过令牌本身间接与保护资源沟通。</p>
+<p>JWT的结构</p>
+<p>JSON Web令牌格式，或者叫JWT，提供一种在令牌中携带信息的简单方法，JWT的核心将一个JSON对象封装为一种用于网络传输的格式，通过句点分割令牌字符串，句点符号之间的值是一个经过Base64URL编码的JSON对象:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">eyJoeXAioiJKV1QiLCJhbGciOiJub251In0</span><span class="o">.</span><span class="n">eyJzdWIioiIxMjM0NTY3oDkwIiwibmFtZSI6IkpvaG4gRG91IiwiYRtaW4iOnRydwv9</span><span class="o">.</span>
+</pre></div>
+</div>
+<p>其中第一部分表示:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;JWT&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;alg&quot;</span><span class="p">:</span> <span class="s2">&quot;none&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>这是JWT头部，type头告诉处理程序令牌第二部分是何种类型，alg头值为none表示一个未签名的令牌</p>
+<p>JWT声明</p>
+<dl class="docutils">
+<dt>标准JSON Web令牌声明:</dt>
+<dd><ul class="first last simple">
+<li>iss：令牌颁发者，表示令牌由谁创建，在很多OAuth部署中会将它设为授权服务器的URL，该声明是一个字符串</li>
+<li>sub：令牌主体，表示令牌是关于谁的，在很多OAuth部署中会将它设为资源拥有者的唯一标识。该声明是一个字符串</li>
+<li>aud：令牌受众，表示令牌接收者，在很多OAuth部署中，它包含受保护资源的URI或者能够接收该令牌的受保护资源。该声明可以是一个字符串数组，如果只有一个值，也可以是一个不用数组包装的单个字符串</li>
+<li>exp：令牌过期时间戳，他表示令牌将在何时过期，以便部署应用让令牌自行失效，该声明是一个整数，表示自UNIX新纪元（1970.1.1零点）以来的秒数</li>
+<li>nbf：令牌生效时的时间戳，表示令牌什么时候开始生效，该声明为一个整数，表示UNIX新纪元以来的秒数</li>
+<li>iat：令牌颁发时的时间戳，表示令牌是何时被创建的，该声明是一个整数，表示自UNIX新纪元以来的秒数</li>
+<li>jti：令牌的唯一标识符，该令牌的值在令牌颁发者创建的每一个令牌中都是唯一的，为防止冲突，它通常是一个密码学随机值这个值相当于向结构化令牌中加入了一个攻击者无法获取的随机熵组件，有利于防止令牌猜测攻击和重放攻击</li>
+</ul>
+</dd>
+</dl>
+<p>我们也可以在其中添加其他所需字段</p>
+<p>在服务器上实现JWT</p>
+<p>要创建JWT，首先需要一个头部，指明该令牌是JWT且不带签名:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">var</span> <span class="n">header</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;type&#39;</span><span class="p">:</span> <span class="s1">&#39;JWT&#39;</span><span class="p">,</span> <span class="s1">&#39;alg&#39;</span><span class="p">:</span> <span class="s1">&#39;none&#39;</span><span class="p">}</span>
+</pre></div>
+</div>
+<p>接下来创建一个对象来承载JWT载荷，并根据我们所关心的令牌信息来指定字段:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>var payload = {
+    iss: &#39;http://localhost:9001/&#39;,
+    sub: code.user ? code.user.sub : undefined,
+    aud: &#39;http://localhost:9002/&#39;,
+    iat: Math.floor(Date.now()/1000),
+    exp: Math.floor(Date.now()/1000) + (5 * 60),
+    jti: randomstring.generate(8)
+}
+</pre></div>
+</div>
+<p>将头部和载荷的JSON序列化为字符串，并对他们进行Base64URI编码，以句点符号作为连接符将他们连接起来:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">var</span> <span class="n">access_token</span> <span class="o">=</span> <span class="n">base64url</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="n">JSON</span><span class="o">.</span><span class="n">stringify</span><span class="p">(</span><span class="n">header</span><span class="p">))</span>
+<span class="o">+</span> <span class="s1">&#39;.&#39;</span>
+<span class="o">+</span> <span class="n">base64url</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="n">JSON</span><span class="o">.</span><span class="n">stringify</span><span class="p">(</span><span class="n">payload</span><span class="p">))</span>
+<span class="o">+</span> <span class="s1">&#39;.&#39;</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>资源服务器从传入的令牌中获取信息，执行授权服务器令牌创建流程的逆操作来解析令牌：按照句点符号将字符串分开，得到不同部分，然后将第二部分从Base64URL解码，解析出一个JSON对象:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">var</span> <span class="n">tokenParts</span> <span class="o">=</span> <span class="n">inToken</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;.&#39;</span><span class="p">);</span>
+<span class="n">var</span> <span class="n">payload</span> <span class="o">=</span> <span class="n">JSON</span><span class="o">.</span><span class="n">parse</span><span class="p">(</span><span class="n">base64url</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="n">tokenParts</span><span class="p">[</span><span class="mi">1</span><span class="p">]));</span>
+</pre></div>
+</div>
+<p>这样就得到了一个能在应用内进行检查的原生数据结构，我们要确保该令牌来自预期的颁发者；时间戳在合适的范围内；资源服务器是预期的令牌接收者:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">if</span><span class="p">(</span><span class="n">payload</span><span class="o">.</span><span class="n">iss</span> <span class="o">==</span> <span class="s1">&#39;http://localhost:9001/&#39;</span><span class="p">){</span>
+    <span class="k">if</span><span class="p">((</span><span class="n">Array</span><span class="o">.</span><span class="n">isArray</span><span class="p">(</span><span class="n">payload</span><span class="o">.</span><span class="n">aud</span><span class="p">)</span> <span class="o">&amp;&amp;</span> <span class="n">__</span><span class="o">.</span><span class="n">contains</span><span class="p">(</span><span class="n">payload</span><span class="o">.</span><span class="n">aud</span><span class="p">,</span> <span class="s1">&#39;http://localhost:9002/&#39;</span><span class="p">))</span> <span class="o">||</span> <span class="n">payload</span><span class="o">.</span><span class="n">aud</span> <span class="o">==</span> <span class="s1">&#39;http://localhost:9002/&#39;</span><span class="p">){</span>
+        <span class="n">var</span> <span class="n">now</span> <span class="o">=</span> <span class="n">Math</span><span class="o">.</span><span class="n">floor</span><span class="p">(</span><span class="n">Date</span><span class="o">.</span><span class="n">now</span><span class="p">()</span> <span class="o">/</span> <span class="mi">1000</span><span class="p">);</span>
+        <span class="k">if</span><span class="p">(</span><span class="n">payload</span><span class="o">.</span><span class="n">iat</span> <span class="o">&lt;=</span> <span class="n">now</span><span class="p">){</span>
+            <span class="k">if</span><span class="p">(</span><span class="n">payload</span><span class="o">.</span><span class="n">exp</span> <span class="o">&gt;=</span> <span class="n">now</span><span class="p">){</span>
+                <span class="n">req</span><span class="o">.</span><span class="n">access_token</span> <span class="o">=</span> <span class="n">payload</span><span class="p">;</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="jose">
+<h2>11.3. 令牌的加密保护：JOSE<a class="headerlink" href="#jose" title="Permalink to this headline">¶</a></h2>
+<p>使用JSON对象的签名和加密标准对JWT结构令牌进行加密，这套规范以JSON为基础数据模型，提供了签名（JSON Web签名，或称JWS）、加密（JSON Web加密，或称JWE）以及密钥存储格式（JSON Web密钥，或称JWK）的标准。使用HMAC签名方案的对称签名和验证，以及使用RSA签名方案的非对称签名和验证，使用JWK来存储RSA公钥和私钥</p>
+<p>为了完成繁重的加密任务，我们会使用一个叫JSRSASign的JSON库，这个库提供了基本的签名和密钥管理功能，但不提供加密功能</p>
+<p>使用HS256的对称签名:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">var</span> <span class="n">sharedTokenSecret</span> <span class="o">=</span> <span class="s1">&#39;shared OAuth token secret!&#39;</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>使用这个密钥对令牌签名，修改头部参数，指定签名方法为HS256:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">var</span> <span class="n">header</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;type&#39;</span><span class="p">:</span> <span class="s1">&#39;JWT&#39;</span><span class="p">,</span> <span class="s1">&#39;alg&#39;</span><span class="p">:</span> <span class="s1">&#39;HS256&#39;</span><span class="p">};</span>
+</pre></div>
+</div>
+<p>JOSE库要求在向签名函数传入数据前先进行JSON序列化（但不进行Base64URL编码），使用JOSE库和共享密钥对令牌进行HMAC签名算法，由于JOSE库的特殊需求，需要传入十六进制字符串形式的共享密钥，其他的库会对密钥格式有不同要求:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">var</span> <span class="n">access_token</span> <span class="o">=</span> <span class="n">jose</span><span class="o">.</span><span class="n">jws</span><span class="o">.</span><span class="n">JWS</span><span class="o">.</span><span class="n">sign</span><span class="p">(</span><span class="n">header</span><span class="o">.</span><span class="n">alg</span><span class="p">,</span>
+    <span class="n">JSON</span><span class="o">.</span><span class="n">stringify</span><span class="p">(</span><span class="n">header</span><span class="p">),</span>
+    <span class="n">JSON</span><span class="o">.</span><span class="n">stringify</span><span class="p">(</span><span class="n">payload</span><span class="p">),</span>
+    <span class="n">new</span> <span class="n">Buffer</span><span class="p">(</span><span class="n">sharedTokenSecret</span><span class="p">)</span><span class="o">.</span><span class="n">toString</span><span class="p">(</span><span class="s1">&#39;hex&#39;</span><span class="p">));</span>
+</pre></div>
+</div>
+<p>头部和载荷还是和之前一样，经过Base64URL编码的JSON字符串，签名被放在JWT格式的最后一个句点符号后面，是经过Base64URL编码的一组字节，签名JWT的整体结构为header.payload.signature</p>
+<p>修改受保护资源，让其能验证令牌的签名:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">var</span> <span class="n">sharedTokenSecret</span> <span class="o">=</span> <span class="s1">&#39;shared OAuth token secret!&#39;</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>首先，解析令牌:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">var</span> <span class="n">tokenParts</span> <span class="o">=</span> <span class="n">inToken</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;.&#39;</span><span class="p">);</span>
+<span class="n">var</span> <span class="n">header</span> <span class="o">=</span> <span class="n">JSON</span><span class="o">.</span><span class="n">parse</span><span class="p">(</span><span class="n">base64url</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="n">tokenParts</span><span class="p">[</span><span class="mi">0</span><span class="p">]));</span>
+<span class="n">var</span> <span class="n">payload</span> <span class="o">=</span> <span class="n">JSON</span><span class="o">.</span><span class="n">parse</span><span class="p">(</span><span class="n">base64url</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="n">tokenParts</span><span class="p">[</span><span class="mi">1</span><span class="p">]));</span>
+</pre></div>
+</div>
+<p>这一次要用到令牌头部，接下来要根据共享密钥来验证签名，这是我们对令牌内容的首次检查，我们使用的库要求在验证前将密钥转换成十六进制字符串格式:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">if</span><span class="p">(</span><span class="n">jose</span><span class="o">.</span><span class="n">jws</span><span class="o">.</span><span class="n">JWS</span><span class="o">.</span><span class="n">verify</span><span class="p">(</span><span class="n">inToken</span><span class="p">,</span><span class="n">new</span> <span class="n">Buffer</span><span class="p">(</span><span class="n">sharedTokenSecret</span><span class="p">)</span><span class="o">.</span><span class="n">toString</span><span class="p">(</span><span class="s1">&#39;hex&#39;</span><span class="p">),</span> <span class="p">[</span><span class="n">header</span><span class="o">.</span><span class="n">alg</span><span class="p">])){</span>
+</pre></div>
+</div>
+<p>使用RS256的非对称签名</p>
+<p>如上在使用共享密钥时，创建签名和验证签名的系统使用同一个密钥，这样授权服务器和资源服务器都能生产令牌。使用公钥加密，授权服务器拥有公钥和私钥，可用于生成令牌，而受保护资源则只能访问授权服务器的公钥，用于验证令牌，但无法自己生成有效的令牌，我们使用JOSE库中的RS256签名方法，它的地层使用RSA算法</p>
+<p>首先需要在授权服务器上添加一对公钥和私钥，我们的密码对是2048位的RSA密钥，这是推荐的最小长度，本练习使用基于JSON的JWK来存储密钥，可以通过JOSE库直接读取:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">RsaJsonWebKey</span> <span class="n">jwk</span> <span class="o">=</span> <span class="n">RsaJwkGenerator</span><span class="o">.</span><span class="n">generateJwk</span><span class="p">(</span><span class="mi">2048</span><span class="p">);</span>
+<span class="n">jwk</span><span class="o">.</span><span class="n">setKeyId</span><span class="p">(</span><span class="s2">&quot;authserver&quot;</span><span class="p">);</span>
+<span class="n">final</span> <span class="n">String</span> <span class="n">publicKeyString</span> <span class="o">=</span> <span class="n">jwk</span><span class="o">.</span><span class="n">toJson</span><span class="p">(</span><span class="n">JsonWebKey</span><span class="o">.</span><span class="n">OutputControlLevel</span><span class="o">.</span><span class="n">PUBLIC_ONLY</span><span class="p">);</span>
+<span class="n">final</span> <span class="n">String</span> <span class="n">privateKeyString</span> <span class="o">=</span> <span class="n">jwk</span><span class="o">.</span><span class="n">toJson</span><span class="p">(</span><span class="n">JsonWebKey</span><span class="o">.</span><span class="n">OutputControlLevel</span><span class="o">.</span><span class="n">INCLUDE_PRIVATE</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>使用私钥和RS256非对称签名方法，对内容进行签名:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>JwtClaims jwtClaims = new JwtClaims();
+jwtClaims.setIssuer(&quot;authserver&quot;);  //设置颁发者
+jwtClaims.setAudience(&quot;Audience&quot;);  //设置受众
+jwtClaims.setExpirationTimeMinutesInTheFuture(10); //过期时间
+jwtClaims.setGeneratedJwtId();  //令牌唯一标识，通常是一个密码学随机数
+jwtClaims.setIssuedAtToNow();   //令牌颁发时的时间
+jwtClaims.setNotBeforeMinutesInThePast(2); //代码生效时的时间
+jwtClaims.setSubject(&quot;aim&quot;);     //资源拥有者的唯一表标识
+jwtClaims.setStringClaim(&quot;payload&quot;, payload);
+jwtClaims.setStringClaim(&quot;header&quot;, header);
+
+JsonWebSignature jws = new JsonWebSignature();
+jws.setPayload(jwtClaims.toJson());
+jws.setKey(jwk.getRsaPrivateKey());   //私钥
+jws.setKeyIdHeaderValue(jwk.getKeyId());
+jws.setAlgorithmHeaderValue(AlgorithmIdentifiers.RSA_USING_SHA256); //指定签名算法
+
+String jwt = jws.getCompactSerialization();
+</pre></div>
+</div>
+<p>使用公钥和RS256非对称签名方法，对签名进行验签:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">JwtConsumer</span> <span class="n">jwtConsumer</span> <span class="o">=</span> <span class="n">new</span> <span class="n">JwtConsumerBuilder</span><span class="p">()</span><span class="o">.</span><span class="n">setRequireExpirationTime</span><span class="p">()</span>
+            <span class="o">.</span><span class="n">setAllowedClockSkewInSeconds</span><span class="p">(</span><span class="mi">30</span><span class="p">)</span>
+            <span class="o">.</span><span class="n">setRequireSubject</span><span class="p">()</span>
+            <span class="o">.</span><span class="n">setExpectedIssuer</span><span class="p">(</span><span class="s2">&quot;authserver&quot;</span><span class="p">)</span>    <span class="o">//</span><span class="n">期望的颁发者</span>
+            <span class="o">.</span><span class="n">setExpectedAudience</span><span class="p">(</span><span class="s2">&quot;Audience&quot;</span><span class="p">)</span>    <span class="o">//</span><span class="n">期望的令牌接收者</span>
+            <span class="o">.</span><span class="n">setVerificationKey</span><span class="p">(</span><span class="n">jwk</span><span class="o">.</span><span class="n">getRsaPublicKey</span><span class="p">())</span>  <span class="o">//</span><span class="n">验签公钥</span>
+            <span class="o">.</span><span class="n">setJweAlgorithmConstraints</span><span class="p">(</span><span class="n">new</span> <span class="n">AlgorithmConstraints</span>    <span class="p">(</span><span class="n">AlgorithmConstraints</span><span class="o">.</span><span class="n">ConstraintType</span><span class="o">.</span><span class="n">WHITELIST</span><span class="p">,</span>
+                    <span class="n">AlgorithmIdentifiers</span><span class="o">.</span><span class="n">RSA_USING_SHA256</span><span class="p">))</span> <span class="o">//</span><span class="n">指定验签算法</span>
+            <span class="o">.</span><span class="n">build</span><span class="p">();</span>
+
+<span class="n">JwtClaims</span> <span class="n">jwtClaims2</span> <span class="o">=</span> <span class="n">jwtConsumer</span><span class="o">.</span><span class="n">processToClaims</span><span class="p">(</span><span class="n">jwt</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>其他令牌保护方法</p>
+<p>基于JOSE的保护令牌方法提供了多种。然而仅签名是不够的，对于仅被签名的令牌，客户端还是可以偷窥令牌本身，从中获取它本无权知道的信息，除了签名之外，JOSE还提供了一个叫JWE的加密机制，包含几种不同的选项和算法，经过JWE加密的JWT不再只有3部分组成，而是由5部分组成。各个部分仍然使用Base64URL编码，只是载荷现在变成了一个经过加密的对象，没有正确的密钥无法读取其内容</p>
+<p>首先私钥签名:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">//</span><span class="n">生成签名密钥对</span>
+<span class="n">RsaJsonWebKey</span> <span class="n">jwk</span> <span class="o">=</span> <span class="n">RsaJwkGenerator</span><span class="o">.</span><span class="n">generateJwk</span><span class="p">(</span><span class="mi">2048</span><span class="p">);</span>
+<span class="n">jwk</span><span class="o">.</span><span class="n">setKeyId</span><span class="p">(</span><span class="s2">&quot;authserver&quot;</span><span class="p">);</span>
+
+<span class="o">//</span><span class="n">私钥签名</span>
+<span class="n">JwtClaims</span> <span class="n">jwtClaims</span> <span class="o">=</span> <span class="n">new</span> <span class="n">JwtClaims</span><span class="p">();</span>
+<span class="n">jwtClaims</span><span class="o">.</span><span class="n">setIssuer</span><span class="p">(</span><span class="s2">&quot;authserver&quot;</span><span class="p">);</span>
+<span class="n">jwtClaims</span><span class="o">.</span><span class="n">setAudience</span><span class="p">(</span><span class="s2">&quot;Audience&quot;</span><span class="p">);</span>
+<span class="n">jwtClaims</span><span class="o">.</span><span class="n">setExpirationTimeMinutesInTheFuture</span><span class="p">(</span><span class="mi">10</span><span class="p">);</span>
+<span class="n">jwtClaims</span><span class="o">.</span><span class="n">setGeneratedJwtId</span><span class="p">();</span>
+<span class="n">jwtClaims</span><span class="o">.</span><span class="n">setIssuedAtToNow</span><span class="p">();</span>
+<span class="n">jwtClaims</span><span class="o">.</span><span class="n">setNotBeforeMinutesInThePast</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>
+<span class="n">jwtClaims</span><span class="o">.</span><span class="n">setSubject</span><span class="p">(</span><span class="s2">&quot;token&quot;</span><span class="p">);</span>
+<span class="n">jwtClaims</span><span class="o">.</span><span class="n">setStringClaim</span><span class="p">(</span><span class="s2">&quot;payload&quot;</span><span class="p">,</span> <span class="n">payload</span><span class="p">);</span>
+<span class="n">jwtClaims</span><span class="o">.</span><span class="n">setStringClaim</span><span class="p">(</span><span class="s2">&quot;header&quot;</span><span class="p">,</span> <span class="n">header</span><span class="p">);</span>
+
+<span class="n">JsonWebSignature</span> <span class="n">jws</span> <span class="o">=</span> <span class="n">new</span> <span class="n">JsonWebSignature</span><span class="p">();</span>
+<span class="n">jws</span><span class="o">.</span><span class="n">setPayload</span><span class="p">(</span><span class="n">jwtClaims</span><span class="o">.</span><span class="n">toJson</span><span class="p">());</span>
+<span class="n">jws</span><span class="o">.</span><span class="n">setKey</span><span class="p">(</span><span class="n">jwk</span><span class="o">.</span><span class="n">getRsaPrivateKey</span><span class="p">());</span>
+<span class="n">jws</span><span class="o">.</span><span class="n">setKeyIdHeaderValue</span><span class="p">(</span><span class="n">jwk</span><span class="o">.</span><span class="n">getKeyId</span><span class="p">());</span>
+<span class="n">jws</span><span class="o">.</span><span class="n">setAlgorithmHeaderValue</span><span class="p">(</span><span class="n">AlgorithmIdentifiers</span><span class="o">.</span><span class="n">RSA_USING_SHA256</span><span class="p">);</span>
+
+<span class="n">String</span> <span class="n">jwt</span> <span class="o">=</span> <span class="n">jws</span><span class="o">.</span><span class="n">getCompactSerialization</span><span class="p">();</span>
+</pre></div>
+</div>
+<p>然后公钥对签名内容加密:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">//</span><span class="n">生成密钥对</span>
+<span class="n">RsaJsonWebKey</span> <span class="n">jwk2</span> <span class="o">=</span> <span class="n">RsaJwkGenerator</span><span class="o">.</span><span class="n">generateJwk</span><span class="p">(</span><span class="mi">2048</span><span class="p">);</span>
+<span class="n">jwk2</span><span class="o">.</span><span class="n">setKeyId</span><span class="p">(</span><span class="s2">&quot;encryption&quot;</span><span class="p">);</span>
+<span class="o">//</span><span class="n">对签名内容加密</span>
+<span class="n">JsonWebEncryption</span> <span class="n">jwe3</span> <span class="o">=</span> <span class="n">new</span> <span class="n">JsonWebEncryption</span><span class="p">();</span>
+<span class="n">jwe3</span><span class="o">.</span><span class="n">setAlgorithmHeaderValue</span><span class="p">(</span><span class="n">KeyManagementAlgorithmIdentifiers</span><span class="o">.</span><span class="n">RSA_OAEP_256</span><span class="p">);</span>
+<span class="n">jwe3</span><span class="o">.</span><span class="n">setEncryptionMethodHeaderParameter</span><span class="p">(</span><span class="n">ContentEncryptionAlgorithmIdentifiers</span><span class="o">.</span><span class="n">AES_256_CBC_HMAC_SHA_512</span><span class="p">);</span>
+<span class="n">jwe3</span><span class="o">.</span><span class="n">setKey</span><span class="p">(</span><span class="n">jwk2</span><span class="o">.</span><span class="n">getRsaPublicKey</span><span class="p">());</span>
+<span class="n">jwe3</span><span class="o">.</span><span class="n">setPayload</span><span class="p">(</span><span class="n">jwt</span><span class="p">);</span>
+<span class="n">String</span> <span class="n">token1</span> <span class="o">=</span> <span class="n">jwe3</span><span class="o">.</span><span class="n">getCompactSerialization</span><span class="p">();</span>
+</pre></div>
+</div>
+<p>私钥对加密内容解密:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">//</span><span class="n">对签名内容解密</span>
+<span class="n">JsonWebEncryption</span> <span class="n">jwe4</span> <span class="o">=</span> <span class="n">new</span> <span class="n">JsonWebEncryption</span><span class="p">();</span>
+<span class="n">jwe4</span><span class="o">.</span><span class="n">setKey</span><span class="p">(</span><span class="n">jwk2</span><span class="o">.</span><span class="n">getPrivateKey</span><span class="p">());</span>
+<span class="n">jwe4</span><span class="o">.</span><span class="n">setCompactSerialization</span><span class="p">(</span><span class="n">token1</span><span class="p">);</span>
+<span class="n">String</span> <span class="n">jwt2</span> <span class="o">=</span> <span class="n">jwe4</span><span class="o">.</span><span class="n">getPayload</span><span class="p">();</span>
+</pre></div>
+</div>
+<p>公钥对签名内容验签:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">//</span><span class="n">公钥验签</span>
+<span class="n">JwtConsumer</span> <span class="n">jwtConsumer</span> <span class="o">=</span> <span class="n">new</span> <span class="n">JwtConsumerBuilder</span><span class="p">()</span><span class="o">.</span><span class="n">setRequireExpirationTime</span><span class="p">()</span>
+        <span class="o">.</span><span class="n">setAllowedClockSkewInSeconds</span><span class="p">(</span><span class="mi">30</span><span class="p">)</span>
+        <span class="o">.</span><span class="n">setRequireSubject</span><span class="p">()</span>
+        <span class="o">.</span><span class="n">setExpectedIssuer</span><span class="p">(</span><span class="s2">&quot;authserver&quot;</span><span class="p">)</span>
+        <span class="o">.</span><span class="n">setExpectedAudience</span><span class="p">(</span><span class="s2">&quot;Audience&quot;</span><span class="p">)</span>
+        <span class="o">.</span><span class="n">setVerificationKey</span><span class="p">(</span><span class="n">jwk</span><span class="o">.</span><span class="n">getRsaPublicKey</span><span class="p">())</span>
+        <span class="o">.</span><span class="n">setJweAlgorithmConstraints</span><span class="p">(</span><span class="n">new</span> <span class="n">AlgorithmConstraints</span><span class="p">(</span><span class="n">AlgorithmConstraints</span><span class="o">.</span><span class="n">ConstraintType</span><span class="o">.</span><span class="n">WHITELIST</span><span class="p">,</span>
+                <span class="n">AlgorithmIdentifiers</span><span class="o">.</span><span class="n">RSA_USING_SHA256</span><span class="p">))</span>
+        <span class="o">.</span><span class="n">build</span><span class="p">();</span>
+
+<span class="n">JwtClaims</span> <span class="n">jwtClaims2</span> <span class="o">=</span> <span class="n">jwtConsumer</span><span class="o">.</span><span class="n">processToClaims</span><span class="p">(</span><span class="n">jwt2</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id2">
+<h2>11.4. 在线获取令牌信息：令牌内省<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<p>将令牌信息打包放入令牌本身，将导致令牌尺寸变得非常大，如果受保护资源完全依赖令牌本身所包含的信息，则一旦将有效的令牌生成并发布，想要撤回会非常困难</p>
+<p>内省协议</p>
+<p>OAuth令牌内省协议定义了一种机制，让受保护资源能够主动向授权服务器查询令牌状态。该协议是对OAuth的一个简单增强。授权服务器向客户端颁发令牌，客户端向受保护资源出示令牌，受保护资源向授权服务器查询令牌状态</p>
+<p>内省请求是发送给授权服务器内省端点的表单形式的HTTP请求，受保护资源在请求过程中需要向授权服务器进行身份认证，内省协议并未规定如何认证，例如，受保护资源使用ID和密码通过HTTP Basic进行省份认证，这与OAuth客户端向令牌端点进行身份认证方式一样。也可以使用单独的访问令牌完成此过程，UMA协议就是这样做的。</p>
+<p>内省请求的响应是一个JSON对象，用于描述令牌信息，它的内容与JWT的载荷相使，任何有效的JWT声明都可以包含在响应中:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">HTTP</span> <span class="mi">200</span> <span class="n">ok</span>
+<span class="n">Content</span><span class="o">-</span><span class="nb">type</span><span class="p">:</span> <span class="n">application</span><span class="o">/</span><span class="n">json</span>
+<span class="p">{</span>
+    <span class="s2">&quot;active&quot;</span><span class="p">:</span> <span class="n">true</span><span class="p">,</span>
+    <span class="s2">&quot;scope&quot;</span><span class="p">:</span> <span class="s2">&quot;foo bar baz&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;client_id&quot;</span><span class="p">:</span> <span class="s2">&quot;oauth-client-1&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;username&quot;</span><span class="p">:</span> <span class="s2">&quot;alice&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;iss&quot;</span><span class="p">:</span> <span class="s2">&quot;http://localhsot:9001/&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;sub&quot;</span><span class="p">:</span> <span class="s2">&quot;alice&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;aud&quot;</span><span class="p">:</span> <span class="s2">&quot;http://localhsot:9002/&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;iat&quot;</span><span class="p">:</span> <span class="mi">1440538696</span><span class="p">,</span>
+    <span class="s2">&quot;exp&quot;</span><span class="p">:</span> <span class="mi">1440538996</span><span class="p">,</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>内省协议规范还在JWT的基础上增加了几个声明定义，其中最重要的是active声明，此声明告诉受保护资源当前令牌在授权服务器上是否有效，且是唯一必须返回的声明。由于OAuth令牌有多种部署类型，对有效令牌的定义并没有标准。但一般情况下，它的含义为令牌是由该授权服务颁发，还没有过期，也没有撤回，而且允许当前受保护资源获取它的信息。使用令牌内省会导致OAuth系统内的网络流量增加，为解决这个问题，允许受保护资源缓存给定令牌的内省请求结果，建议设置短于令牌生命周期的缓存有效期，以降低令牌被撤回但缓存还有效的可能性。</p>
+</div>
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../20-security/security.html" class="btn btn-neutral float-right" title="security" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="10-常见的OAuth令牌漏洞.html" class="btn btn-neutral" title="10. 常见的OAuth令牌漏洞" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright .
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'1.0.0',
+            LANGUAGE:'None',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+      <script type="text/javascript" src="../_static/language_data.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

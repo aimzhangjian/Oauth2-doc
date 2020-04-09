@@ -1,0 +1,306 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>1. 简介 &mdash; 认证 1.0.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="../genindex.html"/>
+        <link rel="search" title="Search" href="../search.html"/>
+    <link rel="top" title="认证 1.0.0 documentation" href="../index.html"/>
+        <link rel="up" title="OAuth2" href="oauth2.html"/>
+        <link rel="next" title="2. OAuth组件" href="2-oauth.html"/>
+        <link rel="prev" title="OAuth2" href="oauth2.html"/> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> 认证
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.0.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="oauth2.html">OAuth2</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">1. 简介</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id2">1.1. 协议规范</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id3">1.2. 凭证共享与凭证盗用</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#oauth2-0">1.3. OAuth2.0优缺点</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id4">1.4. OAuth2.0不能做什么</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="2-oauth.html">2. OAuth组件</a></li>
+<li class="toctree-l2"><a class="reference internal" href="3-构建简单的OAuth客户端.html">3. 构建OAuth客户端</a></li>
+<li class="toctree-l2"><a class="reference internal" href="4-构建简单的OAuth受保护资源.html">4. 构建简单的OAuth受保护资源</a></li>
+<li class="toctree-l2"><a class="reference internal" href="5-构建简单的OAuth授权服务器.html">5. 构建简单OAuth授权服务器</a></li>
+<li class="toctree-l2"><a class="reference internal" href="6-现实世界中OAuth2.0.html">6. 现实世界中的OAuth2.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="7-常见的客户端漏洞.html">7. 常见的客户端漏洞</a></li>
+<li class="toctree-l2"><a class="reference internal" href="8-常见的受保护资源漏洞.html">8. 常见的受保护资源漏洞</a></li>
+<li class="toctree-l2"><a class="reference internal" href="9-常见的授权服务器漏洞.html">9. 常见的授权服务器漏洞</a></li>
+<li class="toctree-l2"><a class="reference internal" href="10-常见的OAuth令牌漏洞.html">10. 常见的OAuth令牌漏洞</a></li>
+<li class="toctree-l2"><a class="reference internal" href="11-OAuth令牌.html">11. OAuth令牌</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../20-security/security.html">security</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../30-spring-oauth2/spring-oauth2.html">Spring OAuth2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../40-spring-cloud-oauth-security/spring-cloud-oauth-security.html">Spring Cloud OAuth</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">认证</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="oauth2.html">OAuth2</a> &raquo;</li>
+        
+      <li>1. 简介</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/10-oauth2/1-简介.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="id1">
+<h1>1. 简介<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
+<p>OAuth2.0是一个授权协议，它允许软件应用代表（而不是充当）资源拥有者去访问资源拥有者的资源。应用向资源拥有者请求授权，然后获得令牌，并用它来访问资源。</p>
+<div class="section" id="id2">
+<h2>1.1. 协议规范<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<p>OAuth2.0框架能让第三方应用以有限的权限访问HTTP服务，可以通过构建资源拥有者与HTTP服务间的许可交互机制，让第三方应用代表资源拥有者访问服务，或者通过授权给第三方应用，让其代表自己访问服务。</p>
+</div>
+<div class="section" id="id3">
+<h2>1.2. 凭证共享与凭证盗用<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
+<p>共享用户凭证</p>
+<p>复制用户的凭证并用于登陆另一个服务，客户端直接代表用户访问受保护资源，对于服务是同一个公司下，可以采用这种模式</p>
+<p>向用户索要凭证</p>
+<p>客户端访问受保护资源，可以通过向用户索取用户名密码，客户端可能会保存用户名密码，对于像移动应用端要求用户输入用户名密码访问后端接口。</p>
+<p>开发者密钥</p>
+<p>客户端使用开发者颁布的密钥访问受保护资源，客户端可以通过密钥访问所有用户的受保护资源，一旦密钥被盗所有用户将受到影响</p>
+<p>用户特殊密码</p>
+<p>用户维护除账号密码外的额外密码，用户通过像客户端提供这种特殊密码授权客户端访问权限</p>
+<p>授权访问</p>
+<p>OAuth设计目的是让最终用户通过OAuth将他们在受保护资源上的部分权限委托给客户端应用，使客户端应用代表他们执行操作。为实现这一点，OAuth引入了授权服务器
+.. image: ./img/oauth工作过程.png</p>
+<p>权限委托</p>
+<p>委托是OAuth强大功能的根基。OAuth本身并不承载或传递权限，它提供一种方式让客户可以请求用户将部分权限委托给自己，用户可以批准这个委托请求。</p>
+<p>用户主导的安全</p>
+<p>OAuth系统遵循TOFU原则（首次使用时信任），在TOFU模型中，需要用户在第一次运行时进行安全决策，而且并不为安全决策预设任何先决条件或者配置，仅提示用户做出决策，之后系统会记住用户的决策。OAuth实现并不强制要求TOFU方法管理安全策略。</p>
+</div>
+<div class="section" id="oauth2-0">
+<h2>1.3. OAuth2.0优缺点<a class="headerlink" href="#oauth2-0" title="Permalink to this headline">¶</a></h2>
+<p>优点：
+- 善于获取用户的委托决策，并通过网络传递出去，让多方参与安全决策过程，尤其是在运行期间让最终用户参与决策
+- 让复杂性尽可能从客户端转移到服务端，客户端不需要处理签名规范化以及解析复杂的安全策略、也不需要担心处理复杂的用户凭证
+- 授权服务器和受保护资源需要承担更多的复杂性和安全方面的责任。客户端只用保护好自身客户端凭证和用户的令牌即可，单个客户端攻破只会影响该用户，并且不会泄露用户的凭证</p>
+<p>缺点：
+- OAuth的某些自定义选项可能被用在错误的地方或实施不当，导致不安全的实现
+- 一个系统即使按照规范正确的实现OAuth，也不意味着该系统在实践中是安全的</p>
+</div>
+<div class="section" id="id4">
+<h2>1.4. OAuth2.0不能做什么<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>OAuth没有定义HTTP协议之外的情形</li>
+<li>OAuth不是身份认证协议</li>
+<li>OAuth没有定义用户对用户的授权机制</li>
+<li>OAuth没有定义授权处理机制，并不定义授权内容。由服务API定义使用范围、令牌之类的OAuth组件来定义一个给定的令牌适用于那些操作</li>
+<li>OAuth没有定义令牌格式，但颁发令牌的授权服务器和接收令牌的受保护资源仍然需要理解令牌</li>
+<li>OAuth2.0没有定义加密方法</li>
+<li>OAuth2.0不是单体协议</li>
+</ul>
+</div>
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="2-oauth.html" class="btn btn-neutral float-right" title="2. OAuth组件" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="oauth2.html" class="btn btn-neutral" title="OAuth2" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright .
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'1.0.0',
+            LANGUAGE:'None',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+      <script type="text/javascript" src="../_static/language_data.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

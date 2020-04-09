@@ -1,0 +1,527 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>6. 现实世界中的OAuth2.0 &mdash; 认证 1.0.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="../genindex.html"/>
+        <link rel="search" title="Search" href="../search.html"/>
+    <link rel="top" title="认证 1.0.0 documentation" href="../index.html"/>
+        <link rel="up" title="OAuth2" href="oauth2.html"/>
+        <link rel="next" title="7. 常见的客户端漏洞" href="7-常见的客户端漏洞.html"/>
+        <link rel="prev" title="5. 构建简单OAuth授权服务器" href="5-构建简单的OAuth授权服务器.html"/> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> 认证
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.0.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="oauth2.html">OAuth2</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="1-简介.html">1. 简介</a></li>
+<li class="toctree-l2"><a class="reference internal" href="2-oauth.html">2. OAuth组件</a></li>
+<li class="toctree-l2"><a class="reference internal" href="3-构建简单的OAuth客户端.html">3. 构建OAuth客户端</a></li>
+<li class="toctree-l2"><a class="reference internal" href="4-构建简单的OAuth受保护资源.html">4. 构建简单的OAuth受保护资源</a></li>
+<li class="toctree-l2"><a class="reference internal" href="5-构建简单的OAuth授权服务器.html">5. 构建简单OAuth授权服务器</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">6. 现实世界中的OAuth2.0</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id1">6.1. 授权许可类型</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="7-常见的客户端漏洞.html">7. 常见的客户端漏洞</a></li>
+<li class="toctree-l2"><a class="reference internal" href="8-常见的受保护资源漏洞.html">8. 常见的受保护资源漏洞</a></li>
+<li class="toctree-l2"><a class="reference internal" href="9-常见的授权服务器漏洞.html">9. 常见的授权服务器漏洞</a></li>
+<li class="toctree-l2"><a class="reference internal" href="10-常见的OAuth令牌漏洞.html">10. 常见的OAuth令牌漏洞</a></li>
+<li class="toctree-l2"><a class="reference internal" href="11-OAuth令牌.html">11. OAuth令牌</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../20-security/security.html">security</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../30-spring-oauth2/spring-oauth2.html">Spring OAuth2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../40-spring-cloud-oauth-security/spring-cloud-oauth-security.html">Spring Cloud OAuth</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">认证</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="oauth2.html">OAuth2</a> &raquo;</li>
+        
+      <li>6. 现实世界中的OAuth2.0</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/10-oauth2/6-现实世界中OAuth2.0.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="oauth2-0">
+<h1>6. 现实世界中的OAuth2.0<a class="headerlink" href="#oauth2-0" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="id1">
+<h2>6.1. 授权许可类型<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<p>OAuth2.0核心协议定位为一个框架而不是单个协议。通过保持协议的核心概念稳固和支持在特定领域进行扩展，OAuth2.0支持以多种不同方式应用。OAuth2.0最关键的一个变化就是授权许可，OAuth2.0提供多种授权许可类型</p>
+<p>隐式许可类型</p>
+<p>隐式许可类型直接从授权端点返回令牌，因此隐式许可类型只能使用前端信道和授权服务器通信，隐式许可流程不可用于获取刷新令牌。在授权服务器授权端点增加如下处理:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>var getScopesFromForm = function(body){
+    return __.filter(__.keys(body),function(s){
+        return __.string.startWith(s, &#39;scope_&#39;);
+    }).map(function(s){return s.slice{&#39;scope_&#39;.length});
+};
+
+
+} else if (query.response_type == &#39;token&#39;){
+    var rscope = getScopeFromForm(req.body);//获取请求体中请求权限范围
+    var client = getClient(query.client_id);
+    var cscope = client.scope ? client.scope.split(&#39; &#39;) : undefined;
+    if(__.difference(rscope, cscope).length &gt; 0){
+        var urlParsed = buildUrl(query.redirect_uri, {}, qs.stringify({error: &#39;invalid_scope&#39;}));
+        res.redirect(urlParsed);
+        return;
+    }
+    var access_token = randomstring.generate();
+    nosql.insert({access_token: access_token, client_id: clientID, scope: rscope});
+    var token_response = {access_token: access_token, token_type: &#39;Bearer&#39;, scope: rescope.join(&#39;&#39;)};
+    if(query.state){
+        token_response.state =query.state;
+    }
+
+    var urlParsed = buildUrl(query.redirect_uri, {}, qs.stringify(token_response));
+    res.redirect(urlParsed);
+    return;
+}
+</pre></div>
+</div>
+<p>客户端凭证许可类型</p>
+<p>在客户端凭证许可类型中资源拥有者被塞进客户端，没有用户代理存在，许可流程只使用后端信道，客户端代表自己从令牌端点获取令牌，grant_type参数值为client_credentials，没有授权码或者其他用于换取令牌的临时凭证</p>
+<p>修改授权服务器令牌端点，添加处理客户端凭证许可类型:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>} else if (req.body.grant_type == &#39;client_credentials&#39;){
+    var rscope = req.body.scope ? req.body.scope.split(&#39; &#39;) : undefined;
+    var cscope = client.scope ? client.scope.split(&#39;&#39;) : undefined;
+    if(__.difference(rscope, cscope).length &gt; 0){
+        res.status(400).json({error: &#39;invalid_scope&#39;});
+        return;
+    }
+    var access_token = randomstring.generate();
+    var token_response = {access_token: access_token, token_type: &#39;Bearer&#39;, scope: rscope.join(&#39; &#39;)};
+    nosql.insert({access_token: access_token, client_id: clientId, scope: rscope});
+    res.status(200).json(token_response);
+    return;
+}
+</pre></div>
+</div>
+<p>客户端请求令牌:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">var</span> <span class="n">form_data</span> <span class="o">=</span> <span class="n">qs</span><span class="o">.</span><span class="n">stringify</span><span class="p">({</span>
+    <span class="n">grant_type</span><span class="p">:</span> <span class="s1">&#39;client_credentials&#39;</span><span class="p">,</span>
+    <span class="n">scope</span><span class="p">:</span> <span class="n">client</span><span class="o">.</span><span class="n">scope</span>
+<span class="p">});</span>
+<span class="n">var</span> <span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;Content-Type&#39;</span><span class="p">:</span> <span class="s1">&#39;application/x-www-form-urlencoded&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;Authorization&#39;</span><span class="p">:</span> <span class="s1">&#39;Basic&#39;</span> <span class="o">+</span> <span class="n">encodeClientCredentials</span><span class="p">(</span><span class="n">client</span><span class="o">.</span><span class="n">client_id</span><span class="p">,</span> <span class="n">client</span><span class="o">.</span><span class="n">client_secret</span><span class="p">)</span>
+<span class="p">};</span>
+<span class="n">var</span> <span class="n">tokRes</span> <span class="o">=</span> <span class="n">request</span><span class="p">(</span><span class="s1">&#39;POST&#39;</span><span class="p">,</span> <span class="n">authServer</span><span class="o">.</span><span class="n">tokenEndpoint</span><span class="p">,</span> <span class="p">{</span>
+    <span class="n">body</span><span class="p">:</span> <span class="n">form_data</span><span class="p">,</span>
+    <span class="n">headers</span><span class="p">:</span> <span class="n">headers</span>
+<span class="p">});</span>
+<span class="k">if</span><span class="p">(</span><span class="n">tokRes</span><span class="o">.</span><span class="n">statusCode</span> <span class="o">&gt;=</span> <span class="mi">200</span> <span class="o">&amp;&amp;</span> <span class="n">tokRes</span><span class="o">.</span><span class="n">statusCode</span> <span class="o">&lt;</span> <span class="mi">300</span><span class="p">){</span>
+    <span class="n">var</span> <span class="n">body</span> <span class="o">=</span> <span class="n">JSON</span><span class="o">.</span><span class="n">parse</span><span class="p">(</span><span class="n">tokRes</span><span class="o">.</span><span class="n">getBody</span><span class="p">());</span>
+    <span class="n">access_token</span> <span class="o">=</span> <span class="n">body</span><span class="o">.</span><span class="n">access_token</span><span class="p">;</span>
+    <span class="n">scope</span> <span class="o">=</span> <span class="n">body</span><span class="o">.</span><span class="n">scope</span><span class="p">;</span>
+    <span class="n">res</span><span class="o">.</span><span class="n">render</span><span class="p">(</span><span class="s1">&#39;index&#39;</span><span class="p">,</span> <span class="p">{</span><span class="n">access_token</span><span class="p">:</span> <span class="n">access_token</span><span class="p">,</span> <span class="n">scope</span><span class="p">:</span> <span class="n">scope</span><span class="p">});</span>
+<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+    <span class="n">res</span><span class="o">.</span><span class="n">render</span><span class="p">(</span><span class="s1">&#39;error&#39;</span><span class="p">,</span> <span class="p">{</span><span class="n">error</span><span class="p">:</span> <span class="s1">&#39;Unable to fetch access token, server response: &#39;</span> <span class="o">+</span> <span class="n">tokRes</span><span class="o">.</span><span class="n">statusCode</span><span class="p">})</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>资源拥有者凭证许可类型</p>
+<p>资源拥有者凭证许可类型，又叫密码流程，客户端通过向用户索取用户凭证，然后用这个凭证换取令牌</p>
+<p>修改授权服务器令牌端点代码，增加密码流程处理代码:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>var getUser = function(username){
+    return userInfo[username]
+}
+
+var username = req.body.username;
+var user = getUser(username);
+if(!user){
+    res.status(401).json({error: &#39;invalid_grant&#39;});
+    return;
+}
+var password = req.body.password;
+if(user.password != password){
+    res.status(401).json({error: &#39;invalid_grant&#39;});
+    return;
+}
+var rscope = req.body.scope ? req.body.scope.split(&#39;&#39;) : undefined;
+var cscope = client.scope ? client.scope.split(&#39; &#39;) : undefined;
+if(__.difference(rscope, cscope).length &gt; 0){
+    res.status(401).json({error: &#39;invalid_scope&#39;});
+    return;
+}
+var access_token = randomstring.generate();
+var refresh_token = randomstring.generate();
+nosql.insert({access_token: access_token, client_id: clientId, scope: rscope});
+nosql.insert({refresh_token: refresh_token, client_id: clientId, scope: rscope});
+var token_response = {access_token: access_token, token_type: &#39;Bearer&#39;, refresh_token: refresh_token, socpe: rscope.join(&#39; &#39;)};
+res.status(200).json(token_response);
+</pre></div>
+</div>
+<p>断言许可类型</p>
+<p>断言许可类型是有OAuth工作组发布的第一个官方扩展许可类型，在这种许可类型下，客户端会得到一条结构化且被加密的信息，叫作断言，使用断言向授权服务器获取令牌。目前有两种标准化的断言格式：一种使用安全断言标记语言（SAML）；另一种使用JSON Web Token（JWT）。这种许可类型只使用后端信道，与客户端凭证许可类型很相似，没有明确的资源拥有者参与，由此颁发的令牌所关联的权限取决于所出示的断言。</p>
+<p>选择合适的许可类型</p>
+<p>客户端是否代表特定的资源拥有者:</p>
+<blockquote>
+<div><ul class="simple">
+<li>是否可以通过用户的Web浏览器将其引导至一个网页，如果可以，就使用基于重定向的许可流程：授权码或者隐式许可流程</li>
+</ul>
+</div></blockquote>
+<p>客户端是否完全运行在浏览器内:</p>
+<blockquote>
+<div><ul class="simple">
+<li>如果是则使用隐式许可类型。如果不是，则要么运行在Web服务器上，要么原生运行在用户计算机，这种情况下应该使用授权码许可类型</li>
+</ul>
+</div></blockquote>
+<p>客户端是原生应用吗:</p>
+<blockquote>
+<div><ul class="simple">
+<li>如果是还因该在授权码许可类型的基础上使用特定的安全扩展，比如动态注册或者代码证明密钥（PKCE）</li>
+</ul>
+</div></blockquote>
+<p>客户端代表自身吗:</p>
+<blockquote>
+<div><ul class="simple">
+<li>这种情况包括不针对单个用户的API访问。如果是这样则因该使用客户端凭证许可流程。如果需要通过参数指定作用于哪个用户，则考虑使用基于重定向的许可流程</li>
+</ul>
+</div></blockquote>
+<dl class="docutils">
+<dt>客户端是否在权威性第三方的指示下运行:</dt>
+<dd><ul class="first last simple">
+<li>这个第三方是否能直接提供一些证明，让你能够代表它执行任务？如果是这样，则因该使用断言许可流程。使用哪种断言取决于授权服务器和颁发断言的第三方</li>
+</ul>
+</dd>
+<dt>客户端是否无法在浏览器中对用户重定向:</dt>
+<dd><ul class="first last simple">
+<li>用户是否具有能够提供给你简单用户凭证？是否没有其他选择？如果是这样，那么可以使用资源拥有者凭证许可类型。</li>
+</ul>
+</dd>
+</dl>
+<p>客户端部署:
+- 客户端可以初略的分为3类：Web应用、浏览器应用、原生应用</p>
+<p>Web应用</p>
+<p>Web应用能充分的利用前端信道和后端信道整两种通信方式。Web应用很容易有效地使用授权码、客户端凭证或断言许可类型</p>
+<p>浏览器应用</p>
+<p>浏览器应用完全运行在浏览器内一般使用JavaScript，虽然应用的代码确实需要由Web服务器提供，但代码本身并不在服务器上运行，Web服务器也不会维护应用任何运行时状态。最适合这类应用的是隐式许可流程:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>var client = {
+    &#39;client_id&#39;: &#39;oauth-client-1&#39;,
+    &#39;redirect_uris&#39;: [&#39;http://localhost:9000/callback&#39;],
+    &#39;scope&#39;: &#39;foo bar&#39;
+}
+
+var authServer = {
+    authorizationEndpoint: &#39;http://localhost:9001/authorize&#39;
+}
+
+var protectedResource = &#39;http://localhost:9002/resource&#39;;
+
+var state = generateState(32);
+localStorage.setItem(&#39;oauth-state&#39;, state);
+location.href = authServer.authorizationEndpoint + &#39;?&#39; +
+    &#39;response_type=token&#39; +
+    &#39;&amp;state=&#39; + state +
+    &#39;&amp;scope=&#39; + encodeURIComponent(client.scope) +
+    &#39;&amp;client_id=&#39; + encodeURIComponent(client.client_id) +
+    &#39;&amp;redirect_rui=&#39; + encodeURIComponent(client.redirect_uris[0]);
+
+var h = location.hash.substring(1);
+var whitelist = [&#39;access_token&#39;, &#39;state&#39;]
+callbackData = {};
+h.split(&#39;&amp;&#39;).forEach(function (e){
+    var d = e.split(&#39;=&#39;);
+
+    if(whitelist.indexOf(d[0] &gt; -1)){
+        callbackData[d[0]] = d[1];
+    }
+});
+
+if(callbackData.state !== localStorage.getItem(&#39;oauth-state&#39;)){
+    callbackData = null;
+    $(&#39;.oauth-protected-resource&#39;).text(&quot;Error state value did not match&quot;);
+} else {
+    $(&#39;.oauth-access-token&#39;).text(callbackData.access_token);
+}
+</pre></div>
+</div>
+<p>原生应用</p>
+<p>原生应用是直接在最终用户的设备上运行的应用。这类应用很容易使用后端信道，直接向远服务器发送HTTP请求即可。为了使用前端信道发送请求，原生应用需要能够访问操作系统上的浏览器或者在应用中嵌入一个浏览器视窗，将用户直接引导至授权服务器。可以采用如下方式:</p>
+<blockquote>
+<div><ul class="simple">
+<li>内嵌在应用内、运行在localhost上的Web服务器</li>
+<li>具有通知推送能力的远程Web服务器，能向应用推送通知</li>
+<li>自定义的URI格式，在操作系统上注册之后，一旦收到该URI格式请求，应用就会被唤起</li>
+</ul>
+</div></blockquote>
+<p>在移动设备上，自定义URI格式是最常用的。授权码许可、客户端凭证许可、和断言许可流程都适用于原生客户端，但不推荐使用隐式许可流程，因为应用能在浏览器之外保留信息:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>var client = {
+    &quot;client_id&quot;: &quot;native-client-1&quot;,
+    &quot;client_secret&quot;: &quot;oauth-native-secret-1&quot;,
+    &quot;redirect_uris&quot;: [&quot;com.oauhtinaction.mynativeapp:/&quot;],//自定义URI格式，只要系统浏览器发现以com.oauhtinaction.mynativeapp:/开头但URL，该应用就会被调用，并且使用一个特殊的处理函数来处理
+    &quot;scope&quot;: &quot;foo bar&quot;
+};
+var authServer = {
+    authorizationEndpoint: &#39;http://localhost:9001/authorize&#39;,
+    tokenEndpoint: &#39;http://localhost:9001/token&#39;,
+}
+var protectedResource = &#39;http://lcoalhost:9002/resource&#39;;
+var state = generateState(32);
+localStorage.setItem(&#39;oauth-state&#39;, state);
+var url = authServer.authorizationEndpoint + &#39;?&#39; +
+    &#39;response_type=code&#39; +
+    &#39;&amp;state=&#39; + state +
+    &#39;&amp;scope=&#39; + encodeURIComponent(client.scope) +
+    &#39;&amp;client_id=&#39; + encodeURIComponent(client.cliet_id) +
+    &#39;&amp;redirect_uri=&#39; + encodeURIComponent(client.redirect_uris[0]);
+cordova.InAppBrowser.open(url, &#39;_system&#39;);//调用系统浏览器
+//资源拥有者完成对客户端授权后，授权服务器在浏览器中将用户重定向到客户端的重定向URI，应用需要监听这个回调，并处理来自授权服务器的响应
+function handleOpenURL(url){ //这个监听器会监听com.oauhtinaction.mynativeapp:/上传的请求，并且从URI中取出请求参数
+    setTimout(function(){
+        processCallback(url.substr(url.indexof(&#39;?&#39;) + 1));
+    }, 0);
+}
+var whitelist = [&#39;code&#39;, &#39;state&#39;];
+callbackData = {};
+h.split(&#39;&amp;&#39;).forEach(function(e){
+    var d = e.split(&#39;=&#39;);
+
+    if(whitelist.indexOf(d[0]) &gt; -1){
+        callbackData[d[0]] = d[1];
+    }
+})
+
+if(callbackData.state !== localStorage.getItem(&#39;oauth-state&#39;)){
+    callbackDate = null;
+    $(&#39;.oauth-protected-resource&#39;).text(&#39;Error: state value did not match&#39;);
+}
+//使用后端信道向授权服务器发起HTTP请求获取令牌
+$.ajax({
+    url: authServer.tokenEndpoint,
+    type: &#39;POST&#39;,
+    crossDomain: true,
+    dataType: &#39;json&#39;,
+    headers: {
+        &#39;Content-Type&#39;: &#39;application/x-www-form-urlencoded&#39;
+    },
+    data: {
+        grant_type: &#39;authorization_code&#39;,
+        code: callbackData.code,
+        client_id: client.client_id,
+        client_secret: client.client_secret,
+    }
+}).done(function(data){
+    $(&#39;.oauth-access-token&#39;).text(data.access_token);
+    callbackData.access_token = data.acess_token;
+}).fail(function(){
+    $(&#39;.oauth-protected-resource&#39;).text(&#39;Error while getting the access token&#39;);
+});
+</pre></div>
+</div>
+<p>处理密钥</p>
+<p>客户端密钥的作用是让客户端软件实例向授权服务器进行身份认证，与资源拥有者的授权无关。Web应用可以配置客户端密钥，并向浏览器和最终用户保密，但原生应用和浏览器应用做不到这一点</p>
+<p>配置期间密钥在客户端的每个副本中都相同，客户端密钥属于配置期间密钥；运行时密钥，在各个客户端实例都不同。浏览器客户端、原生应用都属于公开客户端不需要客户端密钥；Web应用属于保密客户端需要客户端密钥</p>
+</div>
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="7-常见的客户端漏洞.html" class="btn btn-neutral float-right" title="7. 常见的客户端漏洞" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="5-构建简单的OAuth授权服务器.html" class="btn btn-neutral" title="5. 构建简单OAuth授权服务器" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright .
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'1.0.0',
+            LANGUAGE:'None',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+      <script type="text/javascript" src="../_static/language_data.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>
