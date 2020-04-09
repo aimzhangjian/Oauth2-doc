@@ -5,14 +5,14 @@ OAuth2
    :maxdepth: 2
    :numbered: 
 
-   1-简介.rst
+   1-introduction.rst
    2-oauth.rst
-   3-构建简单的OAuth客户端.rst
-   4-构建简单的OAuth受保护资源.rst
-   5-构建简单的OAuth授权服务器.rst
-   6-现实世界中OAuth2.0.rst
-   7-常见的客户端漏洞.rst
-   8-常见的受保护资源漏洞.rst
-   9-常见的授权服务器漏洞.rst
-   10-常见的OAuth令牌漏洞.rst
-   11-OAuth令牌.rst
+   3-create-oauth-client.rst
+   4-create-oauth-protect-source.rst
+   5-create-oauth-service.rst
+   6-reality-oauth2.0.rst
+   7-client-leak.rst
+   8-protect-source-leak.rst
+   9-authorize-service-leak.rst
+   10-oauth-token-leak.rst
+   11-oauth-token.rst
